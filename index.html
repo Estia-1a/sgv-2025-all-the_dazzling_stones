@@ -8,10 +8,345 @@
     <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 767px)"> 
     <title>Document</title>
 </head>
+<body><!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portail - Connexion</title>
+  <meta name="description" content="Page de connexion - prototype" />
+
+  <!-- Styles simples et responsives -->
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --primary:#1e6fff;
+      --accent:#0ea5a4;
+      --text:#0f1724;
+      --muted:#6b7280;
+      --danger:#ef4444;
+      --radius:12px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg, var(--bg), #eaf2ff 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+
+    .container{
+      width:100%;
+      max-width:980px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:32px;
+      align-items:center;
+    }
+
+    /* Left panel (marketing / info) */
+    .panel {
+      padding:36px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+      box-shadow: 0 8px 30px rgba(16,24,40,0.08);
+      min-height:420px;
+    }
+    .panel h1{margin:0 0 6px;font-size:28px}
+    .panel p{margin:0 0 16px;color:var(--muted);line-height:1.5}
+    .features{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .feature{
+      background:rgba(30,111,255,0.06);
+      border-radius:10px;
+      padding:10px 12px;
+      font-size:14px;
+      color:var(--primary);
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    /* Card (login) */
+    .card{
+      background:var(--card);
+      padding:28px;
+      border-radius:var(--radius);
+      box-shadow: 0 10px 30px rgba(16,24,40,0.08);
+    }
+
+    /* Logo area */
+    .logo {
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    .logo img{
+      width:56px;
+      height:56px;
+      border-radius:10px;
+      object-fit:cover;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      box-shadow: 0 6px 18px rgba(14,32,88,0.12);
+    }
+    .logo h2{margin:0;font-size:18px}
+    .logo p{margin:0;color:var(--muted);font-size:13px}
+
+    form{display:flex;flex-direction:column;gap:12px}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    input[type="text"], input[type="password"]{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid #e6e9f2;
+      outline:none;
+      font-size:15px;
+      background:#fbfdff;
+    }
+    input:focus{box-shadow:0 6px 18px rgba(30,111,255,0.06);border-color:var(--primary)}
+
+    .row{display:flex;gap:10px;align-items:center;justify-content:space-between}
+    .checkbox{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted)}
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+      background:linear-gradient(90deg,var(--primary), #2b8bff);
+      color:white;
+      font-size:15px;
+      transition:transform .12s ease,box-shadow .12s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn.secondary{
+      background:transparent;
+      color:var(--primary);
+      border:1px solid rgba(30,111,255,0.12);
+      font-weight:600;
+    }
+
+    .meta{display:flex;gap:12px;align-items:center;justify-content:flex-end}
+    .forgot{font-size:13px;color:var(--muted);text-decoration:none}
+    .forgot:hover{text-decoration:underline}
+
+    .error{color:var(--danger);font-size:13px}
+    .success{color:green;font-size:14px}
+
+    /* small screens */
+    @media (max-width:880px){
+      .container{grid-template-columns:1fr;max-width:720px}
+      .panel{order:2}
+      .card{order:1}
+    }
+
+    /* tiny helper */
+    .password-wrapper{position:relative;display:flex;align-items:center}
+    .password-wrapper .toggle{
+      position:absolute;
+      right:10px;
+      background:transparent;
+      border:0;
+      cursor:pointer;
+      font-size:13px;
+      color:var(--muted);
+      padding:6px;
+      border-radius:8px;
+    }
+    .small{font-size:13px;color:var(--muted)}
+    footer{margin-top:16px;font-size:13px;color:var(--muted);text-align:center}
+  </style>
+</head>
 <body>
-    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt facere voluptates, soluta adipisci cumque dolores odio corporis eius praesentium dicta. Debitis tenetur placeat quibusdam animi, distinctio reiciendis temporibus error ipsam!
-        
-    </h1>
+  <main class="container" aria-labelledby="title">
+    <!-- Left marketing panel -->
+    <section class="panel" aria-hidden="false">
+      <h1 id="title">Bienvenue sur le Portail Élèves</h1>
+      <p>Accède simplement à tes cours, tes ressources et ton espace personnel. Prototype de page de connexion — connecte-toi pour continuer.</p>
+
+      <div class="features" role="list">
+        <div class="feature" role="listitem">📚 Accès aux cours</div>
+        <div class="feature" role="listitem">🔒 Authentification sécurisée</div>
+        <div class="feature" role="listitem">⚡ Rapide & responsive</div>
+        <div class="feature" role="listitem">👥 Gestion des groupes</div>
+      </div>
+
+      <footer>
+        <p class="small">Besoin d'un logo personnalisé ? Remplace l'image par ton fichier (voir le HTML). Ce prototype ne fait pas d'authentification côté serveur.</p>
+      </footer>
+    </section>
+
+    <!-- Right login card -->
+    <aside class="card" aria-label="Formulaire de connexion">
+      <!-- Logo: remplace le src par l'URL ou le chemin de ton logo -->
+      <div class="logo">
+        <!-- Exemple de logo SVG inline via data URI (tu peux remplacer par: src="logo.png") -->
+        <img id="brandLogo" alt="Logo de l'école" src="data:image/svg+xml;utf8,
+          <svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'>
+            <defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%231e6fff'/><stop offset='1' stop-color='%230ea5a4'/></linearGradient></defs>
+            <rect rx='18' width='120' height='120' fill='url(%23g)'/>
+            <g fill='white' transform='translate(24,24)'>
+              <circle cx='18' cy='18' r='18' opacity='0.14'/>
+              <path d='M6 30 L30 6 L54 30 L30 54 Z' fill='white' opacity='0.95'/>
+            </g>
+          </svg>"/>
+        <div>
+          <h2>MonPortail</h2>
+          <p>Connecte-toi avec ton identifiant</p>
+        </div>
+      </div>
+
+      <!-- Alert area -->
+      <div id="alert" role="status" aria-live="polite" style="min-height:20px"></div>
+
+      <!-- Login form -->
+      <form id="loginForm" novalidate>
+        <div>
+          <label for="username">Identifiant</label>
+          <input id="username" name="username" type="text" autocomplete="username" inputmode="text" placeholder="ex: jdupont" required />
+        </div>
+
+        <div>
+          <label for="password">Mot de passe</label>
+          <div class="password-wrapper">
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required />
+            <button type="button" class="toggle" id="togglePwd" aria-pressed="false" aria-label="Afficher le mot de passe">Afficher</button>
+          </div>
+        </div>
+
+        <div class="row" style="align-items:center;margin-top:6px">
+          <label class="checkbox"><input id="remember" type="checkbox" /> Se souvenir</label>
+          <a class="forgot" href="#" id="forgotLink">Mot de passe oublié ?</a>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:8px;align-items:center">
+          <button class="btn" type="submit" id="submitBtn">Se connecter</button>
+          <button class="btn secondary" type="button" id="demoBtn" title="Remplir un exemple">Exemple</button>
+        </div>
+      </form>
+
+      <footer style="margin-top:12px">
+        <p class="small">Prototype client — pour production, implémenter HTTPS, vérification côté serveur et gestion sécurisée des sessions.</p>
+      </footer>
+    </aside>
+  </main>
+
+  <!-- Script: validation & demo authentication -->
+  <script>
+    (function(){
+      const form = document.getElementById('loginForm');
+      const alertEl = document.getElementById('alert');
+      const username = document.getElementById('username');
+      const password = document.getElementById('password');
+      const remember = document.getElementById('remember');
+      const toggle = document.getElementById('togglePwd');
+      const demoBtn = document.getElementById('demoBtn');
+      const submitBtn = document.getElementById('submitBtn');
+
+      // --- Demo credentials (pour prototype uniquement) ---
+      const DEMO_USER = 'etudiant';
+      const DEMO_PASS = 'motdepasse';
+
+      // Load saved username if "remember" used
+      document.addEventListener('DOMContentLoaded', () => {
+        const saved = localStorage.getItem('monportail_username');
+        if (saved) {
+          username.value = saved;
+          remember.checked = true;
+        }
+      });
+
+      // Toggle password visibility
+      toggle.addEventListener('click', () => {
+        const isHidden = password.type === 'password';
+        password.type = isHidden ? 'text' : 'password';
+        toggle.textContent = isHidden ? 'Masquer' : 'Afficher';
+        toggle.setAttribute('aria-pressed', isHidden ? 'true' : 'false');
+      });
+
+      // Fill demo credentials
+      demoBtn.addEventListener('click', () => {
+        username.value = DEMO_USER;
+        password.value = DEMO_PASS;
+        setAlert('Exemple rempli : identifiant "etudiant", mot de passe "motdepasse".', 'success');
+      });
+
+      // Simple client-side validation & demo auth
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        clearAlert();
+
+        // Basic client validation
+        if (!username.value.trim()) return setAlert("Veuillez entrer votre identifiant.", 'error');
+        if (!password.value) return setAlert("Veuillez entrer votre mot de passe.", 'error');
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Connexion...';
+
+        // Simulate server roundtrip
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Se connecter';
+
+          // Demo authentication check (replace by AJAX/Fetch to your backend)
+          if (username.value === DEMO_USER && password.value === DEMO_PASS) {
+            // Save username if requested
+            if (remember.checked) {
+              localStorage.setItem('monportail_username', username.value);
+            } else {
+              localStorage.removeItem('monportail_username');
+            }
+            // On "success", redirect to a dashboard (simulated)
+            setAlert("Connexion réussie — redirection...", 'success');
+            // Simulate redirect (replace with real URL)
+            setTimeout(() => {
+              window.location.href = window.location.href + '?logged=1';
+            }, 800);
+          } else {
+            setAlert("Identifiant ou mot de passe incorrect.", 'error');
+            // For security: clear password field on failure
+            password.value = '';
+            password.focus();
+          }
+        }, 650);
+      });
+
+      // Forgot password link (demo)
+      document.getElementById('forgotLink').addEventListener('click', (ev) => {
+        ev.preventDefault();
+        setAlert("Pour récupérer ton mot de passe, contacte l'administrateur de ton école.", 'success');
+      });
+
+      // Helper functions
+      function setAlert(message, type) {
+        alertEl.innerHTML = '';
+        const p = document.createElement('p');
+        p.textContent = message;
+        if (type === 'error') p.className = 'error';
+        else if (type === 'success') p.className = 'success';
+        else p.className = 'small';
+        alertEl.appendChild(p);
+      }
+      function clearAlert(){ alertEl.innerHTML = ''; }
+
+    })();
+  </script>
+</body>
+</html>
     
 </body>
 </html>
