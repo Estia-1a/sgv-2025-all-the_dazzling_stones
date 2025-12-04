@@ -42,7 +42,7 @@
       width:100%;
       max-width:980px;
       display:grid;
-      grid-template-columns: 1fr 420px;
+      grid-template-columns: 1fr 1fr;
       gap:32px;
       align-items:center;
     }
@@ -75,6 +75,7 @@
       padding:28px;
       border-radius:var(--radius);
       box-shadow: 0 10px 30px rgba(16,24,40,0.08);
+      height:100%;
     }
 
     /* Logo area */
@@ -196,9 +197,7 @@
         <div class="feature" role="listitem">👥 Gestion des groupes</div>
       </div>
 
-      <footer>
-        <p class="small">Besoin d'un logo personnalisé ? Remplace l'image par ton fichier (voir le HTML). Ce prototype ne fait pas d'authentification côté serveur.</p>
-      </footer>
+      
     </section>
 
     <!-- Right login card -->
@@ -206,20 +205,13 @@
       <!-- Logo: remplace le src par l'URL ou le chemin de ton logo -->
       <div class="logo">
         <!-- Exemple de logo SVG inline via data URI (tu peux remplacer par: src="logo.png") -->
-        <img id="brandLogo" alt="Logo de l'école" src="data:image/svg+xml;utf8,
-          <svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'>
-            <defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%231e6fff'/><stop offset='1' stop-color='%230ea5a4'/></linearGradient></defs>
-            <rect rx='18' width='120' height='120' fill='url(%23g)'/>
-            <g fill='white' transform='translate(24,24)'>
-              <circle cx='18' cy='18' r='18' opacity='0.14'/>
-              <path d='M6 30 L30 6 L54 30 L30 54 Z' fill='white' opacity='0.95'/>
-            </g>
-          </svg>"/>
-        <div>
-          <h2>MonPortail</h2>
-          <p>Connecte-toi avec ton identifiant</p>
+        <div class="logo">
+          <img id="brandLogo" src="Logo-School-Portal.jpg" alt="Logo School Portal">
+          <div>
+            <h2>MonPortail</h2>
+            <p>Connecte-toi avec ton identifiant</p>
+          </div>
         </div>
-      </div>
 
       <!-- Alert area -->
       <div id="alert" role="status" aria-live="polite" style="min-height:20px"></div>
@@ -250,9 +242,7 @@
         </div>
       </form>
 
-      <footer style="margin-top:12px">
-        <p class="small">Prototype client — pour production, implémenter HTTPS, vérification côté serveur et gestion sécurisée des sessions.</p>
-      </footer>
+    
     </aside>
   </main>
 
