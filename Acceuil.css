@@ -1,0 +1,90 @@
+<!-- CSS pour la page d'Accueil -->
+<!-- css barre de reherche>
+
+header { background: #437849; color: #fff; padding: 20px; text-align: center; position: relative; }
+.search-bar {
+    margin-top: 20px;
+}
+.search-bar input {
+    width: 60%;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+<!-- fin css barre de recherche -->
+<!-- début css préview cours -->
+.courses-preview { margin: 30px 0; }
+.courses-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 20px 0;
+}
+.course-card {
+    min-width: 120px;
+    height: 160px;
+    background: #fff;
+    border: 2px solid #34495e;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+main {
+    padding: 40px;
+    text-align: center;
+    position: relative;
+}
+<!-- fin css préview cours -->
+<!-- début css barre latérale chat -->
+
+/* barre latérale à droite */
+.chat-sidebar {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 200px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+.chat-tab {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    background: #34495e;
+    color: #fff;
+    border: none;
+    padding: 6px 8px;
+    cursor: pointer;
+}
+.chat-box {
+    height: 150px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 0.85rem;
+    overflow-y: auto;
+}
+<!-- fin css barre latérale chat -->
+<!-- début css boutons de chat vers teams et outlook>
+.chat-tab {
+    display: block;          /* ou inline-block */
+    width: 100%;
+    margin-bottom: 5px;
+    background: #34495e;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;   /* enlever le soulignement */
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.chat-tab:hover {
+    background: #2c3e50;
+}
+<!-- fin css boutons de chat vers teams et outlook -->
