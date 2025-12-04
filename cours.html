@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cours disponibles - SchoolPortal</title>
+
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --primary:#16a34a;
+      --accent:#22c55e;
+      --text:#0f1724;
+      --muted:#6b7280;
+      --radius:12px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg, var(--bg), #eaf2ff 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px 28px 60px;   /* plus de marge en bas */
+    }
+
+    .page{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:260px 1fr;
+      gap:24px;
+    }
+
+    @media (max-width:900px){
+      .page{
+        grid-template-columns:1fr;
+      }
+    }
+
+    header h1{margin:0 0 6px;font-size:28px}
+    header p{margin:0 0 24px;color:var(--muted)}
+
+    /* Carte Notes à gauche */
+    .sidebar-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(16,24,40,0.08);
+      padding:16px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      height:fit-content;
+    }
+    .sidebar-card h2{
+      margin:0;
+      font-size:18px;
+    }
+    .sidebar-card p{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .grade-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:13px;
+      padding:6px 0;
+      border-bottom:1px solid #e5e7eb;
+    }
+    .grade-row:last-child{
+      border-bottom:none;
+    }
+    .grade{
+      font-weight:600;
+      color:var(--primary);
+    }
+
+    /* Colonne principale */
+    .main{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .courses-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:20px;
+    }
+
+    @media (max-width:1000px){
+      .courses-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    }
+    @media (max-width:700px){
+      .courses-grid{grid-template-columns:1fr;}
+    }
+
+    .course-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(16,24,40,0.08);
+      padding:22px 20px 20px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min: height 150px;px;       /* cartes plus grandes */
+    }
+
+    .course-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:8px;
+    }
+
+    .course-title{
+      margin:0;
+      font-size:16px;
+      font-weight:600;
+    }
+
+    .course-meta{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .tag{
+      padding:4px 8px;
+      border-radius:999px;
+      background:#ecfdf3;
+      color:var(--primary);
+      font-size:11px;
+      font-weight:600;
+    }
+
+    .progress-label{
+      display:flex;
+      justify-content:space-between;
+      font-size:12px;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    .progress-bar{
+      width:100%;
+      height:8px;
+      border-radius:999px;
+      background:#e5e7eb;
+      overflow:hidden;
+    }
+
+    .progress-fill{
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      width:0%;
+      transition:width .3s ease;
+    }
+
+    .course-actions{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:8px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .course-actions a{
+      font-size:12px;
+      color:var(--primary);
+      text-decoration:none;
+      font-weight:600;
+    }
+    .course-actions a:hover{text-decoration:underline;}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Colonne gauche : Notes -->
+    <aside>
+      <header>
+        <h1>Cours disponibles</h1>
+        <p>Vue d’ensemble de tes cours et de ta progression.</p>
+      </header>
+
+      <section class="sidebar-card">
+        <h2>Notes</h2>
+        <p>Résumé rapide de tes dernières évaluations.</p>
+
+        <div class="grade-row">
+          <span>Développement web</span>
+          <span class="grade">15,5 / 20</span>
+        </div>
+        <div class="grade-row">
+          <span>Maths pour l’ingénieur</span>
+          <span class="grade">14 / 20</span>
+        </div>
+        <div class="grade-row">
+          <span>Projet tutoré ESTIA</span>
+          <span class="grade">En attente</span>
+        </div>
+      </section>
+    </aside>
+
+    <!-- Colonne droite : liste des cours -->
+    <main class="main">
+      <div class="courses-grid">
+        <!-- Cours 1 -->
+        <article class="course-card">
+          <div class="course-header">
+            <div>
+              <h2 class="course-title">Développement web</h2>
+              <p class="course-meta">Prof : M. Dubois • Niveau : Intermédiaire</p>
+            </div>
+            <span class="tag">En cours</span>
+          </div>
+
+          <div class="progress-label">
+            <span>Progression du cours</span>
+            <span>75 %</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:75%;"></div>
+          </div>
+
+          <div class="course-actions">
+            <span>12 / 16 chapitres terminés</span>
+            <a href="#">Continuer le cours</a>
+          </div>
+        </article>
+
+        <!-- Cours 2 -->
+        <article class="course-card">
+          <div class="course-header">
+            <div>
+              <h2 class="course-title">Maths pour l’ingénieur</h2>
+              <p class="course-meta">Prof : Mme Martin • Niveau : Avancé</p>
+            </div>
+            <span class="tag">En cours</span>
+          </div>
+
+          <div class="progress-label">
+            <span>Progression du cours</span>
+            <span>40 %</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:40%;"></div>
+          </div>
+
+          <div class="course-actions">
+            <span>4 / 10 chapitres terminés</span>
+            <a href="#">Continuer le cours</a>
+          </div>
+        </article>
+
+        <!-- Cours 3 -->
+        <article class="course-card">
+          <div class="course-header">
+            <div>
+              <h2 class="course-title">Projet tutoré ESTIA</h2>
+              <p class="course-meta">Prof : Mme Lopez • Niveau : Projet</p>
+            </div>
+            <span class="tag" style="background:#ecfeff;color:#0891b2;">À venir</span>
+          </div>
+
+          <div class="progress-label">
+            <span>Progression du cours</span>
+            <span>0 %</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:0%;"></div>
+          </div>
+
+          <div class="course-actions">
+            <span>Débute le 15 janvier</span>
+            <a href="#">Voir les détails</a>
+          </div>
+        </article>
+
+        <!-- Cours 4 -->
+        <article class="course-card">
+          <div class="course-header">
+            <div>
+              <h2 class="course-title">Bases de données</h2>
+              <p class="course-meta">Prof : M. Garcia • Niveau : Intermédiaire</p>
+            </div>
+            <span class="tag">En cours</span>
+          </div>
+
+          <div class="progress-label">
+            <span>Progression du cours</span>
+            <span>55 %</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:55%;"></div>
+          </div>
+
+          <div class="course-actions">
+            <span>6 / 11 chapitres terminés</span>
+            <a href="#">Continuer le cours</a>
+          </div>
+        </article>
+
+        <!-- Cours 5 -->
+        <article class="course-card">
+          <div class="course-header">
+            <div>
+              <h2 class="course-title">Réseaux informatiques</h2>
+              <p class="course-meta">Prof : Mme Karim • Niveau : Intermédiaire</p>
+            </div>
+            <span class="tag">En cours</span>
+          </div>
+
+          <div class="progress-label">
+            <span>Progression du cours</span>
+            <span>20 %</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:20%;"></div>
+          </div>
+
+          <div class="course-actions">
+            <span>2 / 10 chapitres terminés</span>
+            <a href="#">Continuer le cours</a>
+          </div>
+        </article>
+
+        <!-- Cours 6 -->
+        <article class="course-card">
+          <div class="course-header">
+            <div>
+              <h2 class="course-title">Anglais technique</h2>
+              <p class="course-meta">Prof : Mr Smith • Niveau : B2</p>
+            </div>
+            <span class="tag">Terminé</span>
+          </div>
+
+          <div class="progress-label">
+            <span>Progression du cours</span>
+            <span>100 %</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:100%;"></div>
+          </div>
+
+          <div class="course-actions">
+            <span>16 / 16 chapitres terminés</span>
+            <a href="#">Voir le récapitulatif</a>
+          </div>
+        </article>
+
+        <!-- Cours 7 -->
+        <article class="course-card">
+          <div class="course-header">
+            <div>
+              <h2 class="course-title">IA et data science</h2>
+              <p class="course-meta">Prof : Mme Rossi • Niveau : Avancé</p>
+            </div>
+            <span class="tag">En cours</span>
+          </div>
+
+          <div class="progress-label">
+            <span>Progression du cours</span>
+            <span>30 %</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:30%;"></div>
+          </div>
+
+          <div class="course-actions">
+            <span>3 / 10 chapitres terminés</span>
+            <a href="#">Continuer le cours</a>
+          </div>
+        </article>
+
+        <!-- Cours 8 -->
+        <article class="course-card">
+          <div class="course-header">
+            <div>
+              <h2 class="course-title">Électronique embarquée</h2>
+              <p class="course-meta">Prof : M. Bernard • Niveau : Intermédiaire</p>
+            </div>
+            <span class="tag">En cours</span>
+          </div>
+
+          <div class="progress-label">
+            <span>Progression du cours</span>
+            <span>10 %</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:10%;"></div>
+          </div>
+
+          <div class="course-actions">
+            <span>1 / 10 chapitres terminés</span>
+            <a href="#">Continuer le cours</a>
+          </div>
+        </article>
+
+        <!-- Cours 9 -->
+        <article class="course-card">
+          <div class="course-header">
+            <div>
+              <h2 class="course-title">Gestion de projet</h2>
+              <p class="course-meta">Prof : Mme Dupuis • Niveau : Débutant</p>
+            </div>
+            <span class="tag">En cours</span>
+          </div>
+
+          <div class="progress-label">
+            <span>Progression du cours</span>
+            <span>60 %</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:60%;"></div>
+          </div>
+
+          <div class="course-actions">
+            <span>6 / 10 chapitres terminés</span>
+            <a href="#">Continuer le cours</a>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
