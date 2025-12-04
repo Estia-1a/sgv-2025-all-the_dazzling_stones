@@ -1,35 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 768px)"> 
-    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 767px)"> 
-    <title>Document</title>
-</head>
-<body><!doctype html>
-<html lang="fr">
-<head>
-    <!-- Titre et logo première page de connexion-->
-    <title>School Portal</title>
-    <body>
-    <p style="color: green; font-family: Roboto, sans-serif;">School Portal</p>
-    <img src="Logo-School-Portal.jpg" alt="Logo School Portal" width="150" height="150">
-    </body>
-
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 768px)">
+  <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 767px)">
   <title>Portail - Connexion</title>
-  <meta name="description" content="Page de connexion - prototype" />
+  <meta name="description" content="Page de connexion - prototype">
 
   <!-- Styles simples et responsives -->
   <style>
     :root{
       --bg:#f4f7fb;
       --card:#ffffff;
-      --primary:#1e6fff;
-      --accent:#0ea5a4;
+      --primary:#16a34a;   /* vert principal */
+      --accent:#22c55e;    /* vert plus clair */
       --text:#0f1724;
       --muted:#6b7280;
       --danger:#ef4444;
@@ -46,6 +32,7 @@
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       display:flex;
+      flex-direction:column;   /* IMPORTANT pour avoir le logo au-dessus du bloc */
       align-items:center;
       justify-content:center;
       padding:28px;
@@ -72,7 +59,7 @@
     .panel p{margin:0 0 16px;color:var(--muted);line-height:1.5}
     .features{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
     .feature{
-      background:rgba(30,111,255,0.06);
+      background:rgba(22,163,74,0.08);   /* vert très clair */
       border-radius:10px;
       padding:10px 12px;
       font-size:14px;
@@ -134,7 +121,7 @@
       border:0;
       cursor:pointer;
       font-weight:600;
-      background:linear-gradient(90deg,var(--primary), #2b8bff);
+      background:linear-gradient(90deg,var(--primary), var(--accent));
       color:white;
       font-size:15px;
       transition:transform .12s ease,box-shadow .12s ease;
@@ -176,9 +163,26 @@
     }
     .small{font-size:13px;color:var(--muted)}
     footer{margin-top:16px;font-size:13px;color:var(--muted);text-align:center}
+
+    .page-logo{
+      width: 100%;
+      text-align: center;
+      margin-bottom: 32px;  /* espace entre le logo et le bloc blanc */
+    }
+
+    .page-logo img{
+      width: 150px;
+      height: auto;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
+  <!-- Logo centré en haut de la page -->
+  <header class="page-logo">
+    <img src="Logo-School-Portal.jpg" alt="Logo School Portal">
+  </header>
+
   <main class="container" aria-labelledby="title">
     <!-- Left marketing panel -->
     <section class="panel" aria-hidden="false">
