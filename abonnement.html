@@ -179,8 +179,10 @@
 <body>
 
 <header>
-  <!-- Remplace la source par ton logo ESTIA / SchoolPortal -->
-  <img src="logo.png" alt="SchoolPortal ESTIA">
+  
+ <img src="Logo-School-Portal.jpg" alt="Logo School Portal" width="150" height="150">
+        <img src="Logoestia.png" alt="Logo Estia" width="170" height="150">
+   
   <h1>Gestion d'abonnement</h1>
 </header>
 
@@ -294,6 +296,16 @@
       currentSubInfo.innerHTML =
         'Abonnement actuel : <strong>Classique</strong><br>' +
         'Accès à davantage de cours et aux fiches de révision. Vous pouvez basculer vers Premium à tout moment.';
-    } else if (currentPlan === "premium") {
-      statusPremium.textContent = "Abonné";
-      const btn
+        } else if (currentPlan === "premium") {
+          statusPremium.textContent = "Abonné";
+          const btn = document.querySelector('.plan-card[data-plan="premium"] button');
+          btn.textContent = "Résilier l'abonnement";
+          btn.classList.remove("btn-primary");
+          btn.classList.add("btn-danger");
+          currentSubInfo.innerHTML =
+            'Abonnement actuel : <strong>Premium</strong><br>' +
+            'Accès complet à tous les contenus, conseils personnalisés et support prioritaire.';
+        }
+      }
+    </script>
+      
