@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Discussions - SchoolPortal</title>
+
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --primary:#16a34a;
+      --accent:#22c55e;
+      --text:#0f1724;
+      --muted:#6b7280;
+      --radius:12px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg, var(--bg), #eaf2ff 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+    }
+
+    .page{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    header h1{margin:0 0 6px;font-size:28px}
+    header p{margin:0 0 24px;color:var(--muted)}
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .panel{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(16,24,40,0.08);
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      height:520px;
+    }
+
+    .panel h2{
+      margin:0;
+      font-size:18px;
+    }
+    .panel .subtitle{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .contacts{
+      display:flex;
+      gap:8px;
+      overflow-x:auto;
+      padding-bottom:4px;
+    }
+    .contact{
+      padding:8px 10px;
+      border-radius:999px;
+      background:#f3f4f6;
+      font-size:13px;
+      white-space:nowrap;
+      cursor:pointer;
+    }
+    .contact.active{
+      background:rgba(22,163,74,0.12);
+      color:var(--primary);
+      font-weight:600;
+    }
+
+    .messages{
+      flex:1;
+      border-radius:10px;
+      background:#f9fafb;
+      padding:10px;
+      overflow-y:auto;
+      font-size:14px;
+    }
+    .msg{
+      max-width:80%;
+      padding:8px 10px;
+      border-radius:12px;
+      margin-bottom:6px;
+    }
+    .msg.teacher{
+      background:#e5f6ec;
+      align-self:flex-start;
+    }
+    .msg.student{
+      background:#e5e7eb;
+      align-self:flex-end;
+    }
+
+    .input-row{
+      display:flex;
+      gap:8px;
+      margin-top:4px;
+    }
+    .input-row input{
+      flex:1;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid #e5e7eb;
+      font-size:14px;
+    }
+    .input-row button{
+      padding:10px 16px;
+      border-radius:999px;
+      border:0;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      color:#fff;
+      font-weight:600;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr;}
+      .panel{height:460px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Discussions SchoolPortal</h1>
+      <p>Échange avec tes professeurs et les anciens élèves de l’ESTIA.</p>
+    </header>
+
+    <main class="grid">
+      <!-- Colonne professeurs -->
+      <section class="panel">
+        <div>
+          <h2>Professeurs</h2>
+          <p class="subtitle">Questions de cours, devoirs, orientation…</p>
+        </div>
+
+        <div class="contacts">
+          <div class="contact active">Mme Martin (Maths)</div>
+          <div class="contact">M. Dubois (Informatique)</div>
+          <div class="contact">Mme Lopez (Projet)</div>
+        </div>
+
+        <div class="messages">
+          <div class="msg teacher">Bonjour, n’oubliez pas de rendre le projet vendredi.</div>
+          <div class="msg student">Bonjour Madame, est‑ce qu’on peut le rendre en groupe de 3 ?</div>
+          <div class="msg teacher">Oui, groupes de 2 ou 3, pas plus.</div>
+        </div>
+
+        <div class="input-row">
+          <input type="text" placeholder="Écrire un message au professeur…">
+          <button>Envoyer</button>
+        </div>
+      </section>
+
+      <!-- Colonne anciens élèves -->
+      <section class="panel">
+        <div>
+          <h2>Anciens élèves</h2>
+          <p class="subtitle">Conseils stages, alternance, premier emploi…</p>
+        </div>
+
+        <div class="contacts">
+          <div class="contact active">Clara (Promo 2022)</div>
+          <div class="contact">Yanis (Promo 2021)</div>
+          <div class="contact">Julie (Promo 2020)</div>
+        </div>
+
+        <div class="messages">
+          <div class="msg teacher">Salut, je travaille chez Airbus, si tu veux des infos sur les stages aéronautique n’hésite pas.</div>
+          <div class="msg student">Merci ! Tu conseilles plutôt un stage de 3 ou 6 mois ?</div>
+        </div>
+
+        <div class="input-row">
+          <input type="text" placeholder="Écrire un message à un ancien élève…">
+          <button>Envoyer</button>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
