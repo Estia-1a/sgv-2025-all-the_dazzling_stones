@@ -42,9 +42,9 @@
       width:100%;
       max-width:980px;
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;  /* même largeur */
       gap:32px;
-      align-items:center;
+      align-items:stretch;  
     }
 
     /* Left panel (marketing / info) */
@@ -75,10 +75,10 @@
       padding:28px;
       border-radius:var(--radius);
       box-shadow: 0 10px 30px rgba(16,24,40,0.08);
-      height:100%;
-      display:flex;              /* nouveau */
-      flex-direction:column;     /* nouveau : tout en colonne */
-      gap:20px;                  /* espace entre logo, message, formulaire, boutons */
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      height:100%;                  /* espace entre logo, message, formulaire, boutons */
     }
 
     /* Logo area */
