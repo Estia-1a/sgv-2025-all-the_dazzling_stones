@@ -1,23 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 768px)"> 
-    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 767px)"> 
-    <title>Document</title>
-</head>
-<body><!doctype html>
-<html lang="fr">
-<head>
-    <!-- Titre et logo première page de connexion-->
-    <title>School Portal</title>
-
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 768px)">
+  <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 767px)">
   <title>Portail - Connexion</title>
-  <meta name="description" content="Page de connexion - prototype" />
+  <meta name="description" content="Page de connexion - prototype">
 
   <!-- Styles simples et responsives -->
   <style>
@@ -42,6 +32,7 @@
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       display:flex;
+      flex-direction:column;   /* IMPORTANT pour avoir le logo au-dessus du bloc */
       align-items:center;
       justify-content:center;
       padding:28px;
@@ -173,21 +164,22 @@
     .small{font-size:13px;color:var(--muted)}
     footer{margin-top:16px;font-size:13px;color:var(--muted);text-align:center}
 
-    .top-logo{
-    width: 100%;
-    text-align: center;
-    margin-bottom: 24px;
-  }
+    .page-logo{
+      width: 100%;
+      text-align: center;
+      margin-bottom: 32px;  /* espace entre le logo et le bloc blanc */
+    }
 
-  .top-logo img{
-    width: 150px;
-    height: auto;
-  }
+    .page-logo img{
+      width: 150px;
+      height: auto;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
-  <!-- Logo centré en haut -->
-  <header class="top-logo">
+  <!-- Logo centré en haut de la page -->
+  <header class="page-logo">
     <img src="Logo-School-Portal.jpg" alt="Logo School Portal">
   </header>
 
