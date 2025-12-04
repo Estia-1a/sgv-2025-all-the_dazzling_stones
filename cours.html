@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Cours disponibles – SchoolPortal</title>
+    <link rel="stylesheet" href="styles.css"><!-- si tu as déjà un CSS global -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f3f6fb;
+        }
+
+        /* Bande verte du portail */
+        .top-bar {
+            background: #2f6f3e;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .top-bar img {
+            height: 70px;
+        }
+
+        .top-bar h1 {
+            margin: 10px 0 0;
+            font-size: 24px;
+        }
+
+        /* Navigation simple */
+        .nav {
+            background: #233142;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 10px 0;
+            font-size: 15px;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contenu principal */
+        .page-container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        /* Liste des cours sous forme de cartes */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+        }
+
+        .course-card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-image {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Images de cours (remplace les URL par tes propres images) */
+        .img-physique     { background-image: url("img/physique.jpg"); }
+        .img-mecanique    { background-image: url("img/mecanique.jpg"); }
+        .img-electronique { background-image: url("img/electronique.jpg"); }
+
+        .course-body {
+            padding: 16px 18px 14px;
+        }
+
+        .course-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .course-short {
+            font-size: 14px;
+            color: #4b5563;
+            margin-bottom: 10px;
+        }
+
+        /* Bloc des dernières news */
+        .course-news {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 12px 18px 14px;
+            font-size: 13px;
+        }
+
+        .course-news-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .course-news ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .course-news li::before {
+            content: "• ";
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .course-footer {
+            padding: 10px 18px 16px;
+        }
+
+        .course-footer a {
+            display: inline-block;
+            background: #22c55e;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 7px 12px;
+            border-radius: 6px;
+        }
+
+        .course-footer a:hover {
+            background: #16a34a;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bande verte + logo -->
+    <header class="top-bar">
+        
+        <img src="Logo-School-Portal.jpg" alt="SchoolPortal" widht="200" height="70">
+        <img src="Logoestia.png" alt="Estia" widht="200" height="70">
+        <h1>Cours disponibles</h1>
+    </header>
+
+    <!-- Barre de navigation du portail -->
+    <nav class="nav">
+        <a href="Accueil.html">Accueil</a>
+        <a href="chat.html">Chat étudiants</a>
+        <a href="abonnement.html">Gestion d’abonnement</a>
+    </nav>
+
+    <!-- Contenu -->
+    <main class="page-container">
+        <h2 class="page-title">Tous les cours disponibles</h2>
+
+        <section class="courses-grid">
+
+            <!-- Carte Physique -->
+            <article class="course-card">
+                <div class="course-image img-physique"></div>
+                <img src="image-physique.jpg" alt="Physique" widht="300" height="200">
+                <div class="course-body">
+                    <h3 class="course-title">Physique</h3>
+                    <p class="course-short">
+                        Mécanique, énergie et ondes avec exercices corrigés.
+                    </p>
+                </div>
+                <div class="course-news">
+                    <div class="course-news-title">Dernières news du cours</div>
+                    <ul>
+                        <li>Prochain contrôle : 12/12 à 10h (chapitres 1 à 3).</li>
+                        <li>Devoir à rendre : série d’exercices n°4 pour le 10/12.</li>
+                        <li>Dernière note moyenne : 14,2 / 20.</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <a href="physique.html">Ouvrir le cours</a>
+                </div>
+            </article>
+
+            <!-- Carte Mécanique -->
+            <article class="course-card">
+                <div class="course-image img-mecanique"></div>
+                <img src="image-mécanique.jpg" alt="Mécanique" widht="300" height="200">
+                <div class="course-body">
+                    <h3 class="course-title">Mécanique</h3>
+                    <p class="course-short">
+                        Cinématique, statique des solides, schémas de liaisons et PFS.
+                    </p>
+                </div>
+                <div class="course-news">
+                    <div class="course-news-title">Dernières news du cours</div>
+                    <ul>
+                        <li>TD « engrenages » publié sur la plateforme.</li>
+                        <li>Projet mini-mécanisme : rendu du rapport le 18/12.</li>
+                        <li>Dernier contrôle : copies disponibles en correction.</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <a href="mecanique.html">Ouvrir le cours</a>
+                </div>
+            </article>
+
+            <!-- Carte Électronique -->
+            <article class="course-card">
+                <div class="course-image img-electronique"></div>
+                <img src="image-électronique.jpg" alt="Électronique" widht="300" height="200">
+                <div class="course-body">
+                    <h3 class="course-title">Électronique</h3>
+                    <p class="course-short">
+                        Circuits logiques, analogiques, filtres et introduction aux microcontrôleurs.
+                    </p>
+                </div>
+                <div class="course-news">
+                    <div class="course-news-title">Dernières news du cours</div>
+                    <ul>
+                        <li>Contrôle de TP : 15/12 sur l’utilisation de l’oscilloscope.</li>
+                        <li>Compte rendu de TP n°3 à déposer avant le 13/12.</li>
+                        <li>Dernière note moyenne : 12,8 / 20.</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <a href="electronique.html">Ouvrir le cours</a>
+                </div>
+            </article>
+
+             <article class="course-card">
+                <div class="course-image img-informatique"></div>
+                <img src="image-informatique.jpeg" alt="Informatique" widht="300" height="200">
+                <div class="course-body">
+                    <h3 class="course-title">Informatique</h3>
+                    <p class="course-short">
+                        Python, structures de données et algorithmes fondamentaux.
+                    </p>
+                </div>
+                <div class="course-news">
+                    <div class="course-news-title">Dernières news du cours</div>
+                    <ul>
+                        <li>TD "structure de données"</li>
+                        <li>Projet mini-programme : rendu du TP le 22/12.</li>
+                        <li>Dernier contrôle : copies disponibles en correction.</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <a href="informatique.html">Ouvrir le cours</a>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+</body>
+</html>
