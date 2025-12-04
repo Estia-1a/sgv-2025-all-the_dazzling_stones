@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestion d'abonnement</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+    }
+
+    /* Bandeau vert + logo + titre */
+    header {
+      background-color: #246533;
+      color: white;
+      text-align: center;
+      padding: 20px 0 10px;
+    }
+
+    header img {
+      height: 90px;
+      display: block;
+      margin: 0 auto 5px;
+    }
+
+    header h1 {
+      margin: 5px 0 10px;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    /* Barre de navigation bleu foncé */
+    nav {
+      background-color: #1f3246;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Contenu principal */
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .plans {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .plan-card {
+      background-color: white;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .plan-header {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .plan-price {
+      color: #0c8a3d;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .plan-desc {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .plan-features {
+      font-size: 14px;
+      margin-bottom: 20px;
+      padding-left: 18px;
+    }
+
+    .plan-features li {
+      margin-bottom: 4px;
+    }
+
+    .plan-footer {
+      margin-top: auto;
+      text-align: center;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background-color: #0c8a3d;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #0a6b30;
+    }
+
+    .btn-danger {
+      background-color: #c0392b;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background-color: #992d22;
+    }
+
+    .status {
+      font-size: 13px;
+      margin-top: 8px;
+      color: #555;
+    }
+
+    .status span {
+      font-weight: bold;
+    }
+
+    /* Bloc d’info sur l’abonnement actuel */
+    .current-sub {
+      background-color: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      padding: 15px 20px;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    .current-sub strong {
+      color: #0c8a3d;
+    }
+
+    @media (max-width: 700px) {
+      .plan-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <!-- Remplace la source par ton logo ESTIA / SchoolPortal -->
+  <img src="logo.png" alt="SchoolPortal ESTIA">
+  <h1>Gestion d'abonnement</h1>
+</header>
+
+<nav>
+  <a href="index.html">Accueil</a>
+  <a href="cours.html">Accéder aux cours</a>
+  <a href="chat.html">Chat étudiants</a>
+  <a href="abonnement.html">Gestion d'abonnement</a>
+</nav>
+
+<div class="container">
+  <div class="current-sub" id="currentSubInfo">
+    Abonnement actuel : <strong>Aucun abonnement</strong><br>
+    Accès uniquement aux cours gratuits. Pour débloquer plus de contenus, choisissez une formule ci-dessous.
+  </div>
+
+  <h2>Choisir une formule</h2>
+  <p class="subtitle">Accédez à davantage de cours, d’exercices corrigés et de conseils personnalisés.</p>
+
+  <div class="plans">
+    <!-- Offre classique -->
+    <div class="plan-card" data-plan="classique">
+      <div class="plan-header">Classique</div>
+      <div class="plan-price">4,99 € / mois</div>
+      <div class="plan-desc">
+        Accès élargi aux cours théoriques et à une sélection d’exercices corrigés.
+      </div>
+      <ul class="plan-features">
+        <li>Plus de cours dans chaque matière</li>
+        <li>Supports PDF et fiches de révision</li>
+        <li>Mises à jour régulières des contenus</li>
+      </ul>
+      <div class="plan-footer">
+        <button class="btn btn-primary" onclick="toggleSubscription('classique', this)">
+          Prendre l'abonnement classique
+        </button>
+        <div class="status" id="status-classique">
+          Statut : <span>Non abonné</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Offre premium -->
+    <div class="plan-card" data-plan="premium">
+      <div class="plan-header">Premium</div>
+      <div class="plan-price">8,99 € / mois</div>
+      <div class="plan-desc">
+        Accès complet à tous les cours, aux projets, aux conseils et au suivi personnalisé.
+      </div>
+      <ul class="plan-features">
+        <li>Tous les cours et exercices corrigés</li>
+        <li>Conseils personnalisés et mini‑projets guidés</li>
+        <li>Priorité sur le support et le chat enseignants</li>
+      </ul>
+      <div class="plan-footer">
+        <button class="btn btn-primary" onclick="toggleSubscription('premium', this)">
+          Prendre l'abonnement premium
+        </button>
+        <div class="status" id="status-premium">
+          Statut : <span>Non abonné</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Simulation simple côté front : l'utilisateur ne peut avoir qu'un seul abonnement.
+  // En vrai, tu brancheras sur ta base de données / API.
+
+  let currentPlan = null; // "classique", "premium" ou null
+
+  function toggleSubscription(plan, button) {
+    if (currentPlan === plan) {
+      // Résiliation
+      currentPlan = null;
+      updateUI();
+    } else {
+      // Changer / prendre un abonnement
+      currentPlan = plan;
+      updateUI();
+    }
+  }
+
+  function updateUI() {
+    const statusClassique = document.getElementById("status-classique").querySelector("span");
+    const statusPremium = document.getElementById("status-premium").querySelector("span");
+    const btns = document.querySelectorAll(".plan-card button");
+    const currentSubInfo = document.getElementById("currentSubInfo");
+
+    // Reset
+    statusClassique.textContent = "Non abonné";
+    statusPremium.textContent = "Non abonné";
+    btns.forEach(btn => {
+      btn.classList.remove("btn-danger");
+      btn.classList.add("btn-primary");
+      if (btn.closest(".plan-card").dataset.plan === "classique") {
+        btn.textContent = "Prendre l'abonnement classique";
+      } else {
+        btn.textContent = "Prendre l'abonnement premium";
+      }
+    });
+
+    // Mettre à jour selon la formule active
+    if (currentPlan === "classique") {
+      statusClassique.textContent = "Abonné";
+      const btn = document.querySelector('.plan-card[data-plan="classique"] button');
+      btn.textContent = "Résilier l'abonnement";
+      btn.classList.remove("btn-primary");
+      btn.classList.add("btn-danger");
+      currentSubInfo.innerHTML =
+        'Abonnement actuel : <strong>Classique</strong><br>' +
+        'Accès à davantage de cours et aux fiches de révision. Vous pouvez basculer vers Premium à tout moment.';
+    } else if (currentPlan === "premium") {
+      statusPremium.textContent = "Abonné";
+      const btn
