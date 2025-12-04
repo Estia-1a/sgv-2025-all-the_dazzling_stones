@@ -76,6 +76,9 @@
       border-radius:var(--radius);
       box-shadow: 0 10px 30px rgba(16,24,40,0.08);
       height:100%;
+      display:flex;              /* nouveau */
+      flex-direction:column;     /* nouveau : tout en colonne */
+      gap:20px;                  /* espace entre logo, message, formulaire, boutons */
     }
 
     /* Logo area */
@@ -202,47 +205,52 @@
 
     <!-- Right login card -->
     <aside class="card" aria-label="Formulaire de connexion">
-      <!-- Logo: remplace le src par l'URL ou le chemin de ton logo -->
       <div class="logo">
-        <!-- Exemple de logo SVG inline via data URI (tu peux remplacer par: src="logo.png") -->
-        <div class="logo">
-          <img id="brandLogo" src="Logo-School-Portal.jpg" alt="Logo School Portal">
-          <div>
-            <h2>MonPortail</h2>
-            <p>Connecte-toi avec ton identifiant</p>
-          </div>
+        <img id="brandLogo" src="Logo-School-Portal.jpg" alt="Logo School Portal">
+        <div>
+          <h2>MonPortail</h2>
+          <p>Connecte-toi avec ton identifiant</p>
         </div>
+      </div>
 
-      <!-- Alert area -->
+      <!-- zone d’alerte -->
       <div id="alert" role="status" aria-live="polite" style="min-height:20px"></div>
 
       <!-- Login form -->
       <form id="loginForm" novalidate>
         <div>
           <label for="username">Identifiant</label>
-          <input id="username" name="username" type="text" autocomplete="username" inputmode="text" placeholder="ex: jdupont" required />
+          <input id="username" name="username" type="text"
+                 autocomplete="username" inputmode="text"
+                 placeholder="ex: jdupont" required />
         </div>
 
         <div>
           <label for="password">Mot de passe</label>
           <div class="password-wrapper">
-            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required />
-            <button type="button" class="toggle" id="togglePwd" aria-pressed="false" aria-label="Afficher le mot de passe">Afficher</button>
+            <input id="password" name="password" type="password"
+                   autocomplete="current-password" placeholder="••••••••" required />
+            <button type="button" class="toggle" id="togglePwd"
+                    aria-pressed="false" aria-label="Afficher le mot de passe">
+              Afficher
+            </button>
           </div>
         </div>
 
         <div class="row" style="align-items:center;margin-top:6px">
-          <label class="checkbox"><input id="remember" type="checkbox" /> Se souvenir</label>
+          <label class="checkbox">
+            <input id="remember" type="checkbox" /> Se souvenir
+          </label>
           <a class="forgot" href="#" id="forgotLink">Mot de passe oublié ?</a>
         </div>
 
         <div style="display:flex;gap:10px;margin-top:8px;align-items:center">
           <button class="btn" type="submit" id="submitBtn">Se connecter</button>
-          <button class="btn secondary" type="button" id="demoBtn" title="Remplir un exemple">Exemple</button>
+          <button class="btn secondary" type="button" id="demoBtn" title="Remplir un exemple">
+            Exemple
+          </button>
         </div>
       </form>
-
-    
     </aside>
   </main>
 
