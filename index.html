@@ -13,10 +13,6 @@
 <head>
     <!-- Titre et logo première page de connexion-->
     <title>School Portal</title>
-    <body>
-    <p style="color: green; font-family: Roboto, sans-serif;">School Portal</p>
-    <img src="Logo-School-Portal.jpg" alt="Logo School Portal" width="150" height="150">
-    </body>
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -176,9 +172,25 @@
     }
     .small{font-size:13px;color:var(--muted)}
     footer{margin-top:16px;font-size:13px;color:var(--muted);text-align:center}
+
+    .top-logo{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .top-logo img{
+    width: 150px;
+    height: auto;
+  }
   </style>
 </head>
 <body>
+  <!-- Logo centré en haut -->
+  <header class="top-logo">
+    <img src="Logo-School-Portal.jpg" alt="Logo School Portal">
+  </header>
+
   <main class="container" aria-labelledby="title">
     <!-- Left marketing panel -->
     <section class="panel" aria-hidden="false">
