@@ -14,8 +14,8 @@
     :root{
       --bg:#f4f7fb;
       --card:#ffffff;
-      --primary:#1e6fff;
-      --accent:#0ea5a4;
+      --primary:#16a34a;   /* vert principal */
+      --accent:#22c55e;    /* vert plus clair */
       --text:#0f1724;
       --muted:#6b7280;
       --danger:#ef4444;
@@ -59,7 +59,7 @@
     .panel p{margin:0 0 16px;color:var(--muted);line-height:1.5}
     .features{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
     .feature{
-      background:rgba(30,111,255,0.06);
+      background:rgba(22,163,74,0.08);   /* vert très clair */
       border-radius:10px;
       padding:10px 12px;
       font-size:14px;
@@ -121,7 +121,7 @@
       border:0;
       cursor:pointer;
       font-weight:600;
-      background:linear-gradient(90deg,var(--primary), #2b8bff);
+      background:linear-gradient(90deg,var(--primary), var(--accent));
       color:white;
       font-size:15px;
       transition:transform .12s ease,box-shadow .12s ease;
