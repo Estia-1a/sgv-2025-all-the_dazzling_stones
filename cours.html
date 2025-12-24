@@ -1,433 +1,312 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Cours disponibles - SchoolPortal</title>
+    <meta charset="UTF-8">
+    <title>Cours disponibles – SchoolPortal</title>
+    <link rel="stylesheet" href="styles.css"><!-- si tu as déjà un CSS global -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f3f6fb;
+        }
 
-  <style>
-    :root{
-      --bg:#f4f7fb;
-      --card:#ffffff;
-      --primary:#16a34a;
-      --accent:#22c55e;
-      --text:#0f1724;
-      --muted:#6b7280;
-      --radius:12px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
+        /* Bande verte du portail */
+        .top-bar {
+            background: #2f6f3e;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:linear-gradient(180deg, var(--bg), #eaf2ff 100%);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:28px 28px 60px;   /* plus de marge en bas */
-    }
+        .top-bar img {
+            height: 70px;
+        }
 
-    .page{
-      max-width:1100px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:260px 1fr;
-      gap:24px;
-    }
+        .top-bar h1 {
+            margin: 10px 0 0;
+            font-size: 24px;
+        }
 
-    @media (max-width:900px){
-      .page{
-        grid-template-columns:1fr;
-      }
-    }
+        /* Navigation simple */
+        .nav {
+            background: #233142;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 10px 0;
+            font-size: 15px;
+        }
 
-    header h1{margin:0 0 6px;font-size:28px}
-    header p{margin:0 0 24px;color:var(--muted)}
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+        }
 
-    /* Carte Notes à gauche */
-    .sidebar-card{
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:0 10px 30px rgba(16,24,40,0.08);
-      padding:16px 18px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      height:fit-content;
-    }
-    .sidebar-card h2{
-      margin:0;
-      font-size:18px;
-    }
-    .sidebar-card p{
-      margin:0;
-      font-size:13px;
-      color:var(--muted);
-    }
-    .grade-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      font-size:13px;
-      padding:6px 0;
-      border-bottom:1px solid #e5e7eb;
-    }
-    .grade-row:last-child{
-      border-bottom:none;
-    }
-    .grade{
-      font-weight:600;
-      color:var(--primary);
-    }
+        .nav a:hover {
+            text-decoration: underline;
+        }
 
-    /* Colonne principale */
-    .main{
-      display:flex;
-      flex-direction:column;
-    }
+        /* Contenu principal */
+        .page-container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
 
-    .courses-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:20px;
-    }
+        .page-title {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
 
-    @media (max-width:1000px){
-      .courses-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-    }
-    @media (max-width:700px){
-      .courses-grid{grid-template-columns:1fr;}
-    }
+        /* Liste des cours sous forme de cartes */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+        }
 
-    .course-card{
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:0 10px 30px rgba(16,24,40,0.08);
-      padding:22px 20px 20px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      min-height:240px;       /* cartes plus grandes */
-    }
+        .course-card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .course-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:8px;
-    }
+        .course-image {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+        }
 
-    .course-title{
-      margin:0;
-      font-size:16px;
-      font-weight:600;
-    }
+        /* Images de cours (remplace les URL par tes propres images) */
+        .img-physique     { background-image: url("img/physique.jpg"); }
+        .img-mecanique    { background-image: url("img/mecanique.jpg"); }
+        .img-electronique { background-image: url("img/electronique.jpg"); }
 
-    .course-meta{
-      margin:0;
-      font-size:13px;
-      color:var(--muted);
-    }
+        .course-body {
+            padding: 16px 18px 14px;
+        }
 
-    .tag{
-      padding:4px 8px;
-      border-radius:999px;
-      background:#ecfdf3;
-      color:var(--primary);
-      font-size:11px;
-      font-weight:600;
-    }
+        .course-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
 
-    .progress-label{
-      display:flex;
-      justify-content:space-between;
-      font-size:12px;
-      color:var(--muted);
-      margin-top:4px;
-    }
+        .course-short {
+            font-size: 14px;
+            color: #4b5563;
+            margin-bottom: 10px;
+        }
 
-    .progress-bar{
-      width:100%;
-      height:8px;
-      border-radius:999px;
-      background:#e5e7eb;
-      overflow:hidden;
-    }
+        /* Bloc des dernières news */
+        .course-news {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 12px 18px 14px;
+            font-size: 13px;
+        }
 
-    .progress-fill{
-      height:100%;
-      border-radius:999px;
-      background:linear-gradient(90deg,var(--primary),var(--accent));
-      width:0%;
-      transition:width .3s ease;
-    }
+        .course-news-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
 
-    .course-actions{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-top:8px;
-      font-size:12px;
-      color:var(--muted);
-    }
+        .course-news ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
 
-    .course-actions a{
-      font-size:12px;
-      color:var(--primary);
-      text-decoration:none;
-      font-weight:600;
-    }
-    .course-actions a:hover{text-decoration:underline;}
-  </style>
+        .course-news li::before {
+            content: "• ";
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .course-footer {
+            padding: 10px 18px 16px;
+        }
+
+        .course-footer a {
+            display: inline-block;
+            background: #22c55e;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 7px 12px;
+            border-radius: 6px;
+        }
+
+        .course-footer a:hover {
+            background: #16a34a;
+        }
+    </style>
 </head>
 <body>
-  <div class="page">
-    <!-- Colonne gauche : Notes -->
-    <aside>
-      <header>
+
+    <!-- Bande verte + logo -->
+    <header class="top-bar">
+        
+        <img src="Logo-School-Portal.jpg" alt="SchoolPortal" widht="200" height="70">
+        <img src="Logoestia.png" alt="Estia" widht="200" height="70">
         <h1>Cours disponibles</h1>
-        <p>Vue d’ensemble de tes cours et de ta progression.</p>
-      </header>
+    </header>
 
-      <section class="sidebar-card">
-        <h2>Notes</h2>
-        <p>Résumé rapide de tes dernières évaluations.</p>
+    <!-- Barre de navigation du portail -->
+    <nav class="nav">
+        <a href="Accueil.html">Accueil</a>
+        <a href="chat.html">Chat étudiants</a>
+        <a href="abonnement.html">Gestion d’abonnement</a>
+    </nav>
 
-        <div class="grade-row">
-          <span>Développement web</span>
-          <span class="grade">15,5 / 20</span>
-        </div>
-        <div class="grade-row">
-          <span>Maths pour l’ingénieur</span>
-          <span class="grade">14 / 20</span>
-        </div>
-        <div class="grade-row">
-          <span>Projet tutoré ESTIA</span>
-          <span class="grade">En attente</span>
-        </div>
-      </section>
-    </aside>
+    <!-- Contenu -->
+    <main class="page-container">
+        <h2 class="page-title">Tous les cours disponibles</h2>
 
-    <!-- Colonne droite : liste des cours -->
-    <main class="main">
-      <div class="courses-grid">
-        <!-- Cours 1 -->
-        <article class="course-card">
-          <div class="course-header">
-            <div>
-              <h2 class="course-title">Développement web</h2>
-              <p class="course-meta">Prof : M. Dubois • Niveau : Intermédiaire</p>
-            </div>
-            <span class="tag">En cours</span>
-          </div>
+        <section class="courses-grid">
 
-          <div class="progress-label">
-            <span>Progression du cours</span>
-            <span>75 %</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:75%;"></div>
-          </div>
+            <!-- Carte Physique -->
+            <article class="course-card">
+                <div class="course-image img-physique"></div>
+                <img src="image-physique.jpg" alt="Physique" widht="300" height="200">
+                <div class="course-body">
+                    <h3 class="course-title">Physique</h3>
+                    <p class="course-short">
+                        Mécanique, énergie et ondes avec exercices corrigés.
+                    </p>
+                </div>
+                <div class="course-news">
+                    <div class="course-news-title">Dernières news du cours</div>
+                    <ul>
+                        <li>Prochain contrôle : 12/12 à 10h (chapitres 1 à 3).</li>
+                        <li>Devoir à rendre : série d’exercices n°4 pour le 10/12.</li>
+                        <li>Dernière note moyenne : 14,2 / 20.</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <a href="cours-physique.html">Ouvrir le cours</a>
+                </div>
+            </article>
 
-          <div class="course-actions">
-            <span>12 / 16 chapitres terminés</span>
-            <a href="#">Continuer le cours</a>
-          </div>
-        </article>
+            <!-- Carte Mécanique -->
+            <article class="course-card">
+                <div class="course-image img-mecanique"></div>
+                <img src="image-mécanique.jpg" alt="Mécanique" widht="300" height="200">
+                <div class="course-body">
+                    <h3 class="course-title">Mécanique</h3>
+                    <p class="course-short">
+                        Cinématique, statique des solides, schémas de liaisons et PFS.
+                    </p>
+                </div>
+                <div class="course-news">
+                    <div class="course-news-title">Dernières news du cours</div>
+                    <ul>
+                        <li>TD « engrenages » publié sur la plateforme.</li>
+                        <li>Projet mini-mécanisme : rendu du rapport le 18/12.</li>
+                        <li>Dernier contrôle : copies disponibles en correction.</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <a href="cours-mécanique.html">Ouvrir le cours</a>
+                </div>
+            </article>
 
-        <!-- Cours 2 -->
-        <article class="course-card">
-          <div class="course-header">
-            <div>
-              <h2 class="course-title">Maths pour l’ingénieur</h2>
-              <p class="course-meta">Prof : Mme Martin • Niveau : Avancé</p>
-            </div>
-            <span class="tag">En cours</span>
-          </div>
+            <!-- Carte Électronique -->
+            <article class="course-card">
+                <div class="course-image img-electronique"></div>
+                <img src="image-électronique.jpg" alt="Électronique" widht="300" height="200">
+                <div class="course-body">
+                    <h3 class="course-title">Électronique</h3>
+                    <p class="course-short">
+                        Circuits logiques, analogiques, filtres et introduction aux microcontrôleurs.
+                    </p>
+                </div>
+                <div class="course-news">
+                    <div class="course-news-title">Dernières news du cours</div>
+                    <ul>
+                        <li>Contrôle de TP : 15/12 sur l’utilisation de l’oscilloscope.</li>
+                        <li>Compte rendu de TP n°3 à déposer avant le 13/12.</li>
+                        <li>Dernière note moyenne : 12,8 / 20.</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <a href="cours-électronique.html">Ouvrir le cours</a>
+                </div>
+            </article>
 
-          <div class="progress-label">
-            <span>Progression du cours</span>
-            <span>40 %</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:40%;"></div>
-          </div>
+             <article class="course-card">
+                <div class="course-image img-informatique"></div>
+                <img src="image-informatique.jpeg" alt="Informatique" widht="300" height="200">
+                <div class="course-body">
+                    <h3 class="course-title">Informatique</h3>
+                    <p class="course-short">
+                        Python, structures de données et algorithmes fondamentaux.
+                    </p>
+                </div>
+                <div class="course-news">
+                    <div class="course-news-title">Dernières news du cours</div>
+                    <ul>
+                        <li>TD "structure de données"</li>
+                        <li>Projet mini-programme : rendu du TP le 22/12.</li>
+                        <li>Dernier contrôle : copies disponibles en correction.</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <a href="cours-informatique.html">Ouvrir le cours</a>
+                </div>
+            </article>
 
-          <div class="course-actions">
-            <span>4 / 10 chapitres terminés</span>
-            <a href="#">Continuer le cours</a>
-          </div>
-        </article>
+            <article class="course-card">
+                <div class="course-image img-eco-gestion"></div>
+                <img src="image-eco-gestion.png" alt="Eco-Gestion" widht="300" height="200">
+                <div class="course-body">
+                    <h3 class="course-title">Eco-Gestion</h3>
+                    <p class="course-short">
+                        Economie d’entreprise, gestion financière et introduction au marketing.
+                    </p>
+                </div>
+                <div class="course-news">
+                    <div class="course-news-title">Dernières news du cours</div>
+                    <ul>
+                        <li>TD "Gestion Financière"</li>
+                        <li>Projet mini-entreprise: oral le 05/01.</li>
+                        <li>Dernier contrôle : copies disponibles en correction.</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <a href="cours-éco-gestion.html">Ouvrir le cours</a>
+                </div>
+            </article>
 
-        <!-- Cours 3 -->
-        <article class="course-card">
-          <div class="course-header">
-            <div>
-              <h2 class="course-title">Projet tutoré ESTIA</h2>
-              <p class="course-meta">Prof : Mme Lopez • Niveau : Projet</p>
-            </div>
-            <span class="tag" style="background:#ecfeff;color:#0891b2;">À venir</span>
-          </div>
+             <article class="course-card">
+                <div class="course-image img-mathematiques"></div>
+                <img src="photo-maths.jpg" alt="Mathématiques" widht="300" height="200">
+                <div class="course-body">
+                    <h3 class="course-title">Mathématiques</h3>
+                    <p class="course-short">
+                        Mathématiques pour l’ingénieur : algèbre, analyse et statistiques.
+                    </p>
+                </div>
+                <div class="course-news">
+                    <div class="course-news-title">Dernières news du cours</div>
+                    <ul>
+                        <li>TD "Algèbre"</li>
+                        <li>TP analyse et statistiques : à rendre le 10/01.</li>
+                        <li>Dernier contrôle : copies disponibles en correction.</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <a href="cours-mathématiques.html">Ouvrir le cours</a>
+                </div>
+            </article>
 
-          <div class="progress-label">
-            <span>Progression du cours</span>
-            <span>0 %</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:0%;"></div>
-          </div>
-
-          <div class="course-actions">
-            <span>Débute le 15 janvier</span>
-            <a href="#">Voir les détails</a>
-          </div>
-        </article>
-
-        <!-- Cours 4 -->
-        <article class="course-card">
-          <div class="course-header">
-            <div>
-              <h2 class="course-title">Bases de données</h2>
-              <p class="course-meta">Prof : M. Garcia • Niveau : Intermédiaire</p>
-            </div>
-            <span class="tag">En cours</span>
-          </div>
-
-          <div class="progress-label">
-            <span>Progression du cours</span>
-            <span>55 %</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:55%;"></div>
-          </div>
-
-          <div class="course-actions">
-            <span>6 / 11 chapitres terminés</span>
-            <a href="#">Continuer le cours</a>
-          </div>
-        </article>
-
-        <!-- Cours 5 -->
-        <article class="course-card">
-          <div class="course-header">
-            <div>
-              <h2 class="course-title">Réseaux informatiques</h2>
-              <p class="course-meta">Prof : Mme Karim • Niveau : Intermédiaire</p>
-            </div>
-            <span class="tag">En cours</span>
-          </div>
-
-          <div class="progress-label">
-            <span>Progression du cours</span>
-            <span>20 %</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:20%;"></div>
-          </div>
-
-          <div class="course-actions">
-            <span>2 / 10 chapitres terminés</span>
-            <a href="#">Continuer le cours</a>
-          </div>
-        </article>
-
-        <!-- Cours 6 -->
-        <article class="course-card">
-          <div class="course-header">
-            <div>
-              <h2 class="course-title">Anglais technique</h2>
-              <p class="course-meta">Prof : Mr Smith • Niveau : B2</p>
-            </div>
-            <span class="tag">Terminé</span>
-          </div>
-
-          <div class="progress-label">
-            <span>Progression du cours</span>
-            <span>100 %</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:100%;"></div>
-          </div>
-
-          <div class="course-actions">
-            <span>16 / 16 chapitres terminés</span>
-            <a href="#">Voir le récapitulatif</a>
-          </div>
-        </article>
-
-        <!-- Cours 7 -->
-        <article class="course-card">
-          <div class="course-header">
-            <div>
-              <h2 class="course-title">IA et data science</h2>
-              <p class="course-meta">Prof : Mme Rossi • Niveau : Avancé</p>
-            </div>
-            <span class="tag">En cours</span>
-          </div>
-
-          <div class="progress-label">
-            <span>Progression du cours</span>
-            <span>30 %</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:30%;"></div>
-          </div>
-
-          <div class="course-actions">
-            <span>3 / 10 chapitres terminés</span>
-            <a href="#">Continuer le cours</a>
-          </div>
-        </article>
-
-        <!-- Cours 8 -->
-        <article class="course-card">
-          <div class="course-header">
-            <div>
-              <h2 class="course-title">Électronique embarquée</h2>
-              <p class="course-meta">Prof : M. Bernard • Niveau : Intermédiaire</p>
-            </div>
-            <span class="tag">En cours</span>
-          </div>
-
-          <div class="progress-label">
-            <span>Progression du cours</span>
-            <span>10 %</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:10%;"></div>
-          </div>
-
-          <div class="course-actions">
-            <span>1 / 10 chapitres terminés</span>
-            <a href="#">Continuer le cours</a>
-          </div>
-        </article>
-
-        <!-- Cours 9 -->
-        <article class="course-card">
-          <div class="course-header">
-            <div>
-              <h2 class="course-title">Gestion de projet</h2>
-              <p class="course-meta">Prof : Mme Dupuis • Niveau : Débutant</p>
-            </div>
-            <span class="tag">En cours</span>
-          </div>
-
-          <div class="progress-label">
-            <span>Progression du cours</span>
-            <span>60 %</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width:60%;"></div>
-          </div>
-
-          <div class="course-actions">
-            <span>6 / 10 chapitres terminés</span>
-            <a href="#">Continuer le cours</a>
-          </div>
-        </article>
-      </div>
+        </section>
     </main>
-  </div>
+
 </body>
 </html>
