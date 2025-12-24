@@ -1,0 +1,14 @@
+
+header {
+    text-align : center
+}
+body{
+    background-color: green;
+    border-width: 15px;
+    border-style: dotted;
+    border-color: azure;
+}
+footer{
+    text-align : center;
+    text-align : bottom;
+}
