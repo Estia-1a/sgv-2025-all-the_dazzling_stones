@@ -1,309 +1,94 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Cours disponibles – SchoolPortal</title>
-    <link rel="stylesheet" href="styles.css"><!-- si tu as déjà un CSS global -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f3f6fb;
-        }
-
-        /* Bande verte du portail */
-        .top-bar {
-            background: #2f6f3e;
-            color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        .top-bar img {
-            height: 70px;
-        }
-
-        .top-bar h1 {
-            margin: 10px 0 0;
-            font-size: 24px;
-        }
-
-        /* Navigation simple */
-        .nav {
-            background: #233142;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 10px 0;
-            font-size: 15px;
-        }
-
-        .nav a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* Contenu principal */
-        .page-container {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .page-title {
-            font-size: 26px;
-            margin-bottom: 15px;
-        }
-
-        /* Liste des cours sous forme de cartes */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-            gap: 20px;
-        }
-
-        .course-card {
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .course-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Images de cours (remplace les URL par tes propres images) */
-        .img-physique       { background-image: url("media/pictures/image-physique.jpg"); }
-        .img-mecanique      { background-image: url("media/pictures/image-mécanique.jpg"); }
-        .img-electronique   { background-image: url("media/pictures/image-électronique.jpg"); }
-        .img-eco-gestion    { background-image: url("media/pictures/image-eco-gestion.png"); }
-        .img-mathematiques  { background-image: url("media/pictures/photo-maths.jpg"); }
-        .img-informatique   { background-image: url("media/pictures/image-informatique.jpeg"); }
-
-        .course-body {
-            padding: 16px 18px 14px;
-        }
-
-        .course-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .course-short {
-            font-size: 14px;
-            color: #4b5563;
-            margin-bottom: 10px;
-        }
-
-        /* Bloc des dernières news */
-        .course-news {
-            background: #f9fafb;
-            border-top: 1px solid #e5e7eb;
-            padding: 12px 18px 14px;
-            font-size: 13px;
-        }
-
-        .course-news-title {
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .course-news ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
-        }
-
-        .course-news li::before {
-            content: "• ";
-            color: #16a34a;
-            font-weight: bold;
-        }
-
-        .course-footer {
-            padding: 10px 18px 16px;
-        }
-
-        .course-footer a {
-            display: inline-block;
-            background: #22c55e;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 13px;
-            padding: 7px 12px;
-            border-radius: 6px;
-        }
-
-        .course-footer a:hover {
-            background: #16a34a;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Discussions - School Portal</title>
+  <link rel="stylesheet" href="styles/desktop.css" />
 </head>
 <body>
+  <header>
+    <img src="media/pictures/Logo-School-Portal.jpg" alt="Logo School Portal" width="150" height="150" />
+    <h1>Discussions <strong>SchoolPortal</strong></h1>
+    <img src="media/pictures/Logoestia.png" alt="Logo Estia" width="170" height="150" />
+    <div class="search-bar">
+      <input type="search" placeholder="Recherche" />
+    </div>
+  </header>
 
-    <!-- Bande verte + logo -->
-    <header class="top-bar">
-        
-        <img src="media/pictures/Logo-School-Portal.jpg" width="200" height="70" alt="SchoolPortal" >
-        <img src="media/pictures/Logoestia.png" width="200" height="70" alt="Estia" >
-        <h1>Cours disponibles</h1>
-    </header>
+  <nav>
+    <a href="cours.html">Accéder aux cours</a>
+    <a href="chat.html">Chat étudiants</a>
+    <a href="abonnement.html">Gestion d'abonnement</a>
+  </nav>
 
-    <!-- Barre de navigation du portail -->
-    <nav class="nav">
-        <a href="Accueil.html">Accueil</a>
-        <a href="chat.html">Chat étudiants</a>
-        <a href="abonnement.html">Gestion d’abonnement</a>
-    </nav>
+  <main>
+    <section class="courses-preview">
+      <h2>Professeurs</h2>
+      <div class="course-row">
+        <div class="course-info-left">
+          <a href="#">
+            <h3>Mme Martin (Maths)</h3>
+          </a>
+        </div>
+        <div class="course-info-right">
+          <p>Questions de cours, devoirs, orientation…</p>
+        </div>
+      </div>
 
-    <!-- Contenu -->
-    <main class="page-container">
+      <div class="course-row">
+        <div class="course-info-left">
+          <a href="#">
+            <h3>M. Dubois (Informatique)</h3>
+          </a>
+        </div>
+        <div class="course-info-right">
+          <p>Questions de cours, devoirs, orientation…</p>
+        </div>
+      </div>
 
-        <section class="courses-grid">
-        <h2 class="page-title">Tous les cours disponibles</h2>
+      <div class="course-row">
+        <div class="course-info-left">
+          <a href="#">
+            <h3>Mme Lopez (Projet)</h3>
+          </a>
+        </div>
+        <div class="course-info-right">
+          <p>Questions de cours, devoirs, orientation…</p>
+        </div>
+      </div>
 
-            <!-- Carte Physique -->
-            <article class="course-card">
-                <div class="course-image img-physique"></div>
-                <div class="course-body">
-                    <h3 class="course-title">Physique</h3>
-                    <p class="course-short">
-                        Mécanique, énergie et ondes avec exercices corrigés.
-                    </p>
-                </div>
-                <div class="course-news">
-                    <div class="course-news-title">Dernières news du cours</div>
-                    <ul>
-                        <li>Prochain contrôle : 12/12 à 10h (chapitres 1 à 3).</li>
-                        <li>Devoir à rendre : série d’exercices n°4 pour le 10/12.</li>
-                        <li>Dernière note moyenne : 14,2 / 20.</li>
-                    </ul>
-                </div>
-                <div class="course-footer">
-                    <a href="cours-physique.html">Ouvrir le cours</a>
-                </div>
-            </article>
+      <div class="course-row">
+        <div class="course-info-right" style="flex: 1 1 100%;">
+          <p>Bonjour, n’oubliez pas de rendre le projet vendredi.</p>
+          <p>Bonjour Madame, est‑ce qu’on peut le rendre en groupe de 3 ?</p>
+          <p>Oui, groupes de 2 ou 3, pas plus.</p>
+        </div>
+      </div>
 
-            <!-- Carte Mécanique -->
-            <article class="course-card">
-                <div class="course-image img-mecanique"></div>
-                <div class="course-body">
-                    <h3 class="course-title">Mécanique</h3>
-                    <p class="course-short">
-                        Cinématique, statique des solides, schémas de liaisons et PFS.
-                    </p>
-                </div>
-                <div class="course-news">
-                    <div class="course-news-title">Dernières news du cours</div>
-                    <ul>
-                        <li>TD « engrenages » publié sur la plateforme.</li>
-                        <li>Projet mini-mécanisme : rendu du rapport le 18/12.</li>
-                        <li>Dernier contrôle : copies disponibles en correction.</li>
-                    </ul>
-                </div>
-                <div class="course-footer">
-                    <a href="cours-mécanique.html">Ouvrir le cours</a>
-                </div>
-            </article>
+      <div class="course-row" style="gap: 10px;">
+        <input type="text" placeholder="Écrire un message au professeur…" style="flex-grow: 1; padding: 8px 12px; border-radius: 20px; border: 1px solid #ccc;" />
+        <button style="padding: 8px 16px; border-radius: 20px; background-color: var(--primary); color: white; border: none; cursor: pointer;">Envoyer</button>
+      </div>
+    </section>
 
-            <!-- Carte Électronique -->
-            <article class="course-card">
-                <div class="course-image img-electronique"></div>
-                <div class="course-body">
-                    <h3 class="course-title">Électronique</h3>
-                    <p class="course-short">
-                        Circuits logiques, analogiques, filtres et introduction aux microcontrôleurs.
-                    </p>
-                </div>
-                <div class="course-news">
-                    <div class="course-news-title">Dernières news du cours</div>
-                    <ul>
-                        <li>Contrôle de TP : 15/12 sur l’utilisation de l’oscilloscope.</li>
-                        <li>Compte rendu de TP n°3 à déposer avant le 13/12.</li>
-                        <li>Dernière note moyenne : 12,8 / 20.</li>
-                    </ul>
-                </div>
-                <div class="course-footer">
-                    <a href="cours-électronique.html">Ouvrir le cours</a>
-                </div>
-            </article>
+    <aside class="chat-sidebar">
+      <h3>Anciens élèves</h3>
 
-             <article class="course-card">
-                <div class="course-image img-informatique"></div>
-                <div class="course-body">
-                    <h3 class="course-title">Informatique</h3>
-                    <p class="course-short">
-                        Python, structures de données et algorithmes fondamentaux.
-                    </p>
-                </div>
-                <div class="course-news">
-                    <div class="course-news-title">Dernières news du cours</div>
-                    <ul>
-                        <li>TD "structure de données"</li>
-                        <li>Projet mini-programme : rendu du TP le 22/12.</li>
-                        <li>Dernier contrôle : copies disponibles en correction.</li>
-                    </ul>
-                </div>
-                <div class="course-footer">
-                    <a href="cours-informatique.html">Ouvrir le cours</a>
-                </div>
-            </article>
+      <button class="chat-tab">Clara (Promo 2022)</button>
+      <button class="chat-tab">Yanis (Promo 2021)</button>
+      <button class="chat-tab">Julie (Promo 2020)</button>
 
-            <article class="course-card">
-                <div class="course-image img-eco-gestion"></div>
-                <div class="course-body">
-                    <h3 class="course-title">Eco-Gestion</h3>
-                    <p class="course-short">
-                        Economie d’entreprise, gestion financière et introduction au marketing.
-                    </p>
-                </div>
-                <div class="course-news">
-                    <div class="course-news-title">Dernières news du cours</div>
-                    <ul>
-                        <li>TD "Gestion Financière"</li>
-                        <li>Projet mini-entreprise: oral le 05/01.</li>
-                        <li>Dernier contrôle : copies disponibles en correction.</li>
-                    </ul>
-                </div>
-                <div class="course-footer">
-                    <a href="cours-éco-gestion.html">Ouvrir le cours</a>
-                </div>
-            </article>
+      <div class="chat-box">
+        <p>Salut, je travaille chez Airbus, si tu veux des infos sur les stages aéronautique n’hésite pas.</p>
+        <p>Merci ! Tu conseilles plutôt un stage de 3 ou 6 mois ?</p>
+      </div>
 
-             <article class="course-card">
-                <div class="course-image img-mathematiques"></div>
-                <div class="course-body">
-                    <h3 class="course-title">Mathématiques</h3>
-                    <p class="course-short">
-                        Mathématiques pour l’ingénieur : algèbre, analyse et statistiques.
-                    </p>
-                </div>
-                <div class="course-news">
-                    <div class="course-news-title">Dernières news du cours</div>
-                    <ul>
-                        <li>TD "Algèbre"</li>
-                        <li>TP analyse et statistiques : à rendre le 10/01.</li>
-                        <li>Dernier contrôle : copies disponibles en correction.</li>
-                    </ul>
-                </div>
-                <div class="course-footer">
-                    <a href="cours-mathématiques.html">Ouvrir le cours</a>
-                </div>
-            </article>
-
-        </section>
-    </main>
-
+      <div style="margin-top: 12px; display: flex; gap: 10px;">
+        <input type="text" placeholder="Écrire un message à un ancien élève…" style="flex-grow: 1; padding: 8px 12px; border-radius: 20px; border: 1px solid #ccc;" />
+        <button style="padding: 8px 16px; border-radius: 20px; background-color: var(--primary); color: white; border: none; cursor: pointer;">Envoyer</button>
+      </div>
+    </aside>
+  </main>
 </body>
 </html>
