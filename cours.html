@@ -1,33 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Cours disponibles – SchoolPortal</title>
-    <link rel="stylesheet" href="styles/desktop.css">
-    <!-- CSS global centralisé dans desktop.css -->
-    <!-- Bloc <style> supprimé -->
+  <meta charset="UTF-8">
+  <title>Cours disponibles – SchoolPortal</title>
+  <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 767px)">
+  <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 768px)">
 </head>
 <body>
-
-    <!-- Bande verte + logo -->
-    <header class="top-bar">
-        
-        <img src="media/pictures/Logo-School-Portal.jpg" width="200" height="70" alt="SchoolPortal" >
-        <img src="media/pictures/Logoestia.png" width="200" height="70" alt="Estia" >
-        <h1>Cours disponibles</h1>
-    </header>
-
-    <!-- Barre de navigation du portail -->
-    <nav class="nav">
-        <a href="Accueil.html">Accueil</a>
-        <a href="chat.html">Chat étudiants</a>
-        <a href="abonnement.html">Gestion d’abonnement</a>
-    </nav>
-
-    <!-- Contenu -->
-    <main class="page-container">
-        <h2 class="page-title">Tous les cours disponibles</h2>
-        <section class="courses-grid">
+  <header>
+    <img src="media/pictures/Logo-School-Portal.jpg" alt="Logo School Portal" width="150" height="150">
+    <img src="media/pictures/Logoestia.png" alt="Logo Estia" width="170" height="150">
+    <h1>Bienvenue sur le site d'Éducation School Portal</h1>
+    <div class="search-bar">
+      <input type="search" placeholder="search">
+    </div>
+  </header>
+  <nav>
+    <a href="cours.html">Accéder aux cours</a>
+    <a href="chat.html">Chat étudiants</a>
+    <a href="abonnement.html">Gestion d'abonnement</a>
+  </nav>
+  <main class="page-container">
+    <h2 class="page-title">Tous les cours disponibles</h2>
+    <section class="courses-grid">
 
             <!-- Carte Physique -->
             <article class="course-card">
@@ -160,6 +155,5 @@
 
         </section>
     </main>
-
 </body>
 </html>
