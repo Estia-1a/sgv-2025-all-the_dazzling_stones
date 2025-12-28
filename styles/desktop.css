@@ -99,12 +99,12 @@ nav a:hover::after {
 
 /* ----- Main layout ----- */
 main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    display: grid;
-    grid-template-columns: 2.5fr 1fr;
-    gap: 40px;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    grid-template-columns: none;
+    gap: 0;
 }
 
 /* ----- Cours ----- */
@@ -215,4 +215,144 @@ main {
     height: 100%;
     background: linear-gradient(90deg, #4ade80, #22c55e);
     border-radius: 999px;
+}
+
+/* Styles extraits de cours.html */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f3f6fb;
+}
+
+.top-bar {
+    background: #2f6f3e;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.top-bar img {
+    height: 70px;
+}
+
+.top-bar h1 {
+    margin: 10px 0 0;
+    font-size: 24px;
+}
+
+.nav {
+    background: #233142;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px 0;
+    font-size: 15px;
+}
+
+.nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.course-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.img-physique       { background-image: url("../media/pictures/image-physique.jpg"); }
+.img-mecanique      { background-image: url("../media/pictures/image-mécanique.jpg"); }
+.img-electronique   { background-image: url("../media/pictures/image-électronique.jpg"); }
+.img-eco-gestion    { background-image: url("../media/pictures/image-eco-gestion.png"); }
+.img-mathematiques  { background-image: url("../media/pictures/photo-maths.jpg"); }
+.img-informatique   { background-image: url("../media/pictures/image-informatique.jpeg"); }
+
+.course-body {
+    padding: 16px 18px 14px;
+}
+
+.course-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.course-short {
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 10px;
+}
+
+.course-news {
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    padding: 12px 18px 14px;
+    font-size: 13px;
+}
+
+.course-news-title {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.course-news ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.course-news li::before {
+    content: "• ";
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.course-footer {
+    padding: 10px 18px 16px;
+}
+
+.course-footer a {
+    display: inline-block;
+    background: #22c55e;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 7px 12px;
+    border-radius: 6px;
+}
+
+.course-footer a:hover {
+    background: #16a34a;
 }

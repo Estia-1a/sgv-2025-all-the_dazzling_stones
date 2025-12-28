@@ -152,6 +152,28 @@
     background-color: #15803d;
 }
 
+/* Correction visibilité barre de navigation sur la page chat */
+.nav, nav.nav {
+    background: #233142 !important;
+    color: #fff !important;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 12px 0;
+    font-size: 16px;
+    width: 100%;
+}
+
+.nav a, nav.nav a {
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav a:hover, nav.nav a:hover {
+    text-decoration: underline;
+}
+
 /* ======= MOBILE ======= */
 @media (max-width: 768px) {
     .grid {
