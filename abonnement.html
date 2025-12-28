@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Gestion d'abonnement</title>
-  <link rel="stylesheet" href="styles/desktop.css">
+  <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 767px)">
+  <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 768px)">
+  <link rel="stylesheet" href="styles/abonnement.css">
 </head>
 <body>
 
 <header>
-  
- <img src="Logo-School-Portal.jpg" alt="Logo School Portal" width="150" height="150">
-        <img src="Logoestia.png" alt="Logo Estia" width="170" height="150">
-   
-  <h1>Gestion d'abonnement</h1>
+  <img src="media/pictures/Logo-School-Portal.jpg" alt="Logo School Portal" width="150" height="150">
+  <img src="media/pictures/Logoestia.png" alt="Logo Estia" width="170" height="150">
+  <h1>Bienvenue sur le site d'Éducation School Portal</h1>
+  <div class="search-bar">
+    <input type="search" placeholder="search">
+  </div>
 </header>
 
 <nav>
@@ -125,17 +128,22 @@
       currentSubInfo.innerHTML =
         'Abonnement actuel : <strong>Classique</strong><br>' +
         'Accès à davantage de cours et aux fiches de révision. Vous pouvez basculer vers Premium à tout moment.';
-        } else if (currentPlan === "premium") {
-          statusPremium.textContent = "Abonné";
-          const btn = document.querySelector('.plan-card[data-plan="premium"] button');
-          btn.textContent = "Résilier l'abonnement";
-          btn.classList.remove("btn-primary");
-          btn.classList.add("btn-danger");
-          currentSubInfo.innerHTML =
-            'Abonnement actuel : <strong>Premium</strong><br>' +
-            'Accès complet à tous les contenus, conseils personnalisés et support prioritaire.';
-        }
-      }
+    } else if (currentPlan === "premium") {
+      statusPremium.textContent = "Abonné";
+      const btn = document.querySelector('.plan-card[data-plan="premium"] button');
+      btn.textContent = "Résilier l'abonnement";
+      btn.classList.remove("btn-primary");
+      btn.classList.add("btn-danger");
+      currentSubInfo.innerHTML =
+        'Abonnement actuel : <strong>Premium</strong><br>' +
+        'Accès complet à tous les contenus, conseils personnalisés et support prioritaire.';
+    } else {
+      // Aucun abonnement sélectionné
+      currentSubInfo.innerHTML =
+        'Abonnement actuel : <strong>Aucun abonnement</strong><br>' +
+        'Accès uniquement aux cours gratuits. Pour débloquer plus de contenus, choisissez une formule ci-dessous.';
+    }
+  }
     </script>
 </body>
 </html>
