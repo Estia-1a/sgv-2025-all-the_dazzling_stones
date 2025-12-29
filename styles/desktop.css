@@ -32,15 +32,39 @@ body {
 header {
     background: linear-gradient(135deg, var(--primary), #4fa77b);
     color: white;
-    padding: 24px 40px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    padding: 24px 40px 18px 40px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 0;
 }
 
-header h1 {
+/* Logos */
+.header-logos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.header-logos img {
+    border-radius: 0;
     margin: 0;
+    box-shadow: none;
+    width: 150px;
+    height: 150px;
+    max-width: none;
+    max-height: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Titre */
+.header-title {
+    margin: 0 0 0 0;
     text-align: center;
     font-size: 1.6rem;
     font-weight: 600;
@@ -48,25 +72,18 @@ header h1 {
     letter-spacing: 0.5px;
 }
 
-/* Logos */
-header img {
-    border-radius: 0;
-    margin: 0 0 0 0;
-    box-shadow: none;
-    width: 155px;
-    height: 160px;
-    max-width: none;
-    max-height: none;
-}
-
 /* Barre de recherche */
 .search-bar {
-    margin-top: 10px;
-    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
 }
 
 .search-bar input {
-    width: 80vw;
+    width: 350px;
+    max-width: 100%;
+    min-width: 180px;
     padding: 10px 16px;
     border-radius: 999px;
     border: none;
@@ -434,4 +451,34 @@ body {
         width: 95%;
         max-width: 420px;
     }
+}
+
+@media (min-width: 768px) {
+  .header-logos {
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    width: 100%;
+  }
+  .header-logos img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+@media (max-width: 767px) {
+  .header-logos {
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+  }
+  .header-logos img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 90px;
+    height: 90px;
+  }
 }
