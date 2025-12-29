@@ -37,7 +37,6 @@ header {
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 20px;
-    grid-template-rows: auto auto;
 }
 
 header h1 {
@@ -61,18 +60,13 @@ header img {
 }
 
 /* Barre de recherche */
-header .search-bar {
-    grid-column: 1 / -1;
+.search-bar {
     margin-top: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    text-align: center;
 }
 
 .search-bar input {
-    width: 40vw;
-    max-width: 400px;
-    min-width: 180px;
+    width: 80vw;
     padding: 10px 16px;
     border-radius: 999px;
     border: none;
@@ -275,7 +269,7 @@ body {
 }
 
 .nav a {
-    color: #ffffff;
+    color: #959595;
     text-decoration: none;
 }
 

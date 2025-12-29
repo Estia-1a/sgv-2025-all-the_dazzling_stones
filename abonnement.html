@@ -14,7 +14,7 @@
   <img src="media/pictures/Logoestia.png" alt="Logo Estia" width="170" height="150">
   <h1>Bienvenue sur le site d'Éducation School Portal</h1>
   <div class="search-bar">
-    <input type="search" placeholder="search">
+    <input type="search" placeholder="Rechercher">
   </div>
 </header>
 
@@ -22,17 +22,16 @@
   <a href="Accueil.html">Accueil</a>
   <a href="cours.html">Accéder aux cours</a>
   <a href="chat.html">Chat étudiants</a>
-  <a href="abonnement.html">Gestion d'abonnement</a>
 </nav>
 
 <div class="container">
   <div class="current-sub" id="currentSubInfo">
     Abonnement actuel : <strong>Aucun abonnement</strong><br>
-    Accès uniquement aux cours gratuits. Pour débloquer plus de contenus, choisissez une formule ci-dessous.
+    Description : Accès uniquement aux cours gratuits. Pour débloquer plus de contenus, choisissez une formule ci-dessous.
   </div>
 
   <h2>Choisir une formule</h2>
-  <p class="subtitle">Accédez à davantage de cours, d’exercices corrigés et de conseils personnalisés.</p>
+  <p class="subtitle">Accédez à davantage de cours, d’exercices corrigés et de conseils personnalisés :</p>
 
   <div class="plans">
     <!-- Offre classique -->
@@ -127,7 +126,7 @@
       btn.classList.add("btn-danger");
       currentSubInfo.innerHTML =
         'Abonnement actuel : <strong>Classique</strong><br>' +
-        'Accès à davantage de cours et aux fiches de révision. Vous pouvez basculer vers Premium à tout moment.';
+        'Description : Accès à davantage de cours et aux fiches de révision. Vous pouvez basculer vers Premium à tout moment.';
     } else if (currentPlan === "premium") {
       statusPremium.textContent = "Abonné";
       const btn = document.querySelector('.plan-card[data-plan="premium"] button');
@@ -136,12 +135,12 @@
       btn.classList.add("btn-danger");
       currentSubInfo.innerHTML =
         'Abonnement actuel : <strong>Premium</strong><br>' +
-        'Accès complet à tous les contenus, conseils personnalisés et support prioritaire.';
+        'Description : Accès complet à tous les contenus, conseils personnalisés et support prioritaire.';
     } else {
       // Aucun abonnement sélectionné
       currentSubInfo.innerHTML =
         'Abonnement actuel : <strong>Aucun abonnement</strong><br>' +
-        'Accès uniquement aux cours gratuits. Pour débloquer plus de contenus, choisissez une formule ci-dessous.';
+        'Description :  Accès uniquement aux cours gratuits. Pour débloquer plus de contenus, choisissez une formule ci-dessous.';
     }
   }
     </script>
