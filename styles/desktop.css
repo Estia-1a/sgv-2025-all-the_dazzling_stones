@@ -5,9 +5,9 @@
 
 /* ----- Variables (design system) ----- */
 :root {
-    --primary: #3a7f5c;
-    --secondary: #2f3e46;
-    --background: #f6f8f7;
+    --primary: #23a865;
+    --secondary: #636363;
+    --background: #b4b3b3;
     --surface: #ffffff;
     --text: #1f2933;
     --muted: #6b7280;
@@ -37,6 +37,7 @@ header {
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 20px;
+    grid-template-rows: auto auto;
 }
 
 header h1 {
@@ -44,21 +45,34 @@ header h1 {
     text-align: center;
     font-size: 1.6rem;
     font-weight: 600;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 0.5px;
 }
 
 /* Logos */
 header img {
-    border-radius: 8px;
+    border-radius: 0;
+    margin: 0 0 0 0;
+    box-shadow: none;
+    width: 155px;
+    height: 160px;
+    max-width: none;
+    max-height: none;
 }
 
 /* Barre de recherche */
-.search-bar {
+header .search-bar {
+    grid-column: 1 / -1;
     margin-top: 10px;
-    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .search-bar input {
-    width: 260px;
+    width: 40vw;
+    max-width: 400px;
+    min-width: 180px;
     padding: 10px 16px;
     border-radius: 999px;
     border: none;
