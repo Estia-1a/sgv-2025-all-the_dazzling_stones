@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestion d'abonnement</title>
+  <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 767px)">
+  <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 768px)">
+  <link rel="stylesheet" href="styles/abonnement.css">
+</head>
+<body>
+
+<header>
+  <img src="media/pictures/Logo-School-Portal.jpg" alt="Logo School Portal" width="150" height="150">
+  <img src="media/pictures/Logoestia.png" alt="Logo Estia" width="170" height="150">
+  <h1>Bienvenue sur le site d'Éducation School Portal</h1>
+  <div class="search-bar">
+    <input type="search" placeholder="search">
+  </div>
+</header>
+
+<nav>
+  <a href="Accueil.html">Accueil</a>
+  <a href="cours.html">Accéder aux cours</a>
+  <a href="chat.html">Chat étudiants</a>
+  <a href="abonnement.html">Gestion d'abonnement</a>
+</nav>
+
+<div class="container">
+  <div class="current-sub" id="currentSubInfo">
+    Abonnement actuel : <strong>Aucun abonnement</strong><br>
+    Accès uniquement aux cours gratuits. Pour débloquer plus de contenus, choisissez une formule ci-dessous.
+  </div>
+
+  <h2>Choisir une formule</h2>
+  <p class="subtitle">Accédez à davantage de cours, d’exercices corrigés et de conseils personnalisés.</p>
+
+  <div class="plans">
+    <!-- Offre classique -->
+    <div class="plan-card" data-plan="classique">
+      <div class="plan-header">Classique</div>
+      <div class="plan-price">4,99 € / mois</div>
+      <div class="plan-desc">
+        Accès élargi aux cours théoriques et à une sélection d’exercices corrigés.
+      </div>
+      <ul class="plan-features">
+        <li>Plus de cours dans chaque matière</li>
+        <li>Supports PDF et fiches de révision</li>
+        <li>Mises à jour régulières des contenus</li>
+      </ul>
+      <div class="plan-footer">
+        <button class="btn btn-primary" onclick="toggleSubscription('classique', this)">
+          Prendre l'abonnement classique
+        </button>
+        <div class="status" id="status-classique">
+          Statut : <span>Non abonné</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Offre premium -->
+    <div class="plan-card" data-plan="premium">
+      <div class="plan-header">Premium</div>
+      <div class="plan-price">8,99 € / mois</div>
+      <div class="plan-desc">
+        Accès complet à tous les cours, aux projets, aux conseils et au suivi personnalisé.
+      </div>
+      <ul class="plan-features">
+        <li>Tous les cours et exercices corrigés</li>
+        <li>Conseils personnalisés et mini‑projets guidés</li>
+        <li>Priorité sur le support et le chat enseignants</li>
+      </ul>
+      <div class="plan-footer">
+        <button class="btn btn-primary" onclick="toggleSubscription('premium', this)">
+          Prendre l'abonnement premium
+        </button>
+        <div class="status" id="status-premium">
+          Statut : <span>Non abonné</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Simulation simple côté front : l'utilisateur ne peut avoir qu'un seul abonnement.
+  // En vrai, tu brancheras sur ta base de données / API.
+
+  let currentPlan = null; // "classique", "premium" ou null
+
+  function toggleSubscription(plan, button) {
+    if (currentPlan === plan) {
+      // Résiliation
+      currentPlan = null;
+      updateUI();
+    } else {
+      // Changer / prendre un abonnement
+      currentPlan = plan;
+      updateUI();
+    }
+  }
+
+  function updateUI() {
+    const statusClassique = document.getElementById("status-classique").querySelector("span");
+    const statusPremium = document.getElementById("status-premium").querySelector("span");
+    const btns = document.querySelectorAll(".plan-card button");
+    const currentSubInfo = document.getElementById("currentSubInfo");
+
+    // Reset
+    statusClassique.textContent = "Non abonné";
+    statusPremium.textContent = "Non abonné";
+    btns.forEach(btn => {
+      btn.classList.remove("btn-danger");
+      btn.classList.add("btn-primary");
+      if (btn.closest(".plan-card").dataset.plan === "classique") {
+        btn.textContent = "Prendre l'abonnement classique";
+      } else {
+        btn.textContent = "Prendre l'abonnement premium";
+      }
+    });
+
+    // Mettre à jour selon la formule active
+    if (currentPlan === "classique") {
+      statusClassique.textContent = "Abonné";
+      const btn = document.querySelector('.plan-card[data-plan="classique"] button');
+      btn.textContent = "Résilier l'abonnement";
+      btn.classList.remove("btn-primary");
+      btn.classList.add("btn-danger");
+      currentSubInfo.innerHTML =
+        'Abonnement actuel : <strong>Classique</strong><br>' +
+        'Accès à davantage de cours et aux fiches de révision. Vous pouvez basculer vers Premium à tout moment.';
+    } else if (currentPlan === "premium") {
+      statusPremium.textContent = "Abonné";
+      const btn = document.querySelector('.plan-card[data-plan="premium"] button');
+      btn.textContent = "Résilier l'abonnement";
+      btn.classList.remove("btn-primary");
+      btn.classList.add("btn-danger");
+      currentSubInfo.innerHTML =
+        'Abonnement actuel : <strong>Premium</strong><br>' +
+        'Accès complet à tous les contenus, conseils personnalisés et support prioritaire.';
+    } else {
+      // Aucun abonnement sélectionné
+      currentSubInfo.innerHTML =
+        'Abonnement actuel : <strong>Aucun abonnement</strong><br>' +
+        'Accès uniquement aux cours gratuits. Pour débloquer plus de contenus, choisissez une formule ci-dessous.';
+    }
+  }
+    </script>
+</body>
+</html>

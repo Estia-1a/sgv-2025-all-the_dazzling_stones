@@ -1,0 +1,358 @@
+/* ===============================
+   DESKTOP CSS – School Portal
+   Style moderne (≥ 768px)
+   =============================== */
+
+/* ----- Variables (design system) ----- */
+:root {
+    --primary: #3a7f5c;
+    --secondary: #2f3e46;
+    --background: #f6f8f7;
+    --surface: #ffffff;
+    --text: #1f2933;
+    --muted: #6b7280;
+    --accent: #4ade80;
+    --radius: 12px;
+}
+
+/* ----- Reset léger ----- */
+* {
+    box-sizing: border-box;
+}
+
+/* ----- Base ----- */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+/* ----- Header ----- */
+header {
+    background: linear-gradient(135deg, var(--primary), #4fa77b);
+    color: white;
+    padding: 24px 40px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 20px;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+/* Logos */
+header img {
+    border-radius: 8px;
+}
+
+/* Barre de recherche */
+.search-bar {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.search-bar input {
+    width: 260px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+/* ----- Navigation ----- */
+nav {
+    background-color: var(--secondary);
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 14px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ----- Main layout ----- */
+main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    grid-template-columns: none;
+    gap: 0;
+}
+
+/* ----- Cours ----- */
+.courses-preview h2 {
+    margin-bottom: 24px;
+    font-size: 1.4rem;
+}
+
+.course-row {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    padding: 18px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-row:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.course-info-left {
+    text-align: center;
+}
+
+.course-info-left img {
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.course-info-left a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.course-info-right {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ----- Sidebar Chat ----- */
+.chat-sidebar {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    height: fit-content;
+}
+
+.chat-sidebar h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+}
+
+/* Boutons chat */
+.chat-tab {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: linear-gradient(135deg, var(--secondary), #3b4a52);
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.chat-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Zone messages */
+.chat-box {
+    margin-top: 16px;
+    height: 150px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    padding: 10px;
+    font-size: 0.9rem;
+    background-color: #fafafa;
+    overflow-y: auto;
+}
+.progress-card {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4ade80, #22c55e);
+    border-radius: 999px;
+}
+
+/* Styles extraits de cours.html */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f3f6fb;
+}
+
+.top-bar {
+    background: #2f6f3e;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.top-bar img {
+    height: 70px;
+}
+
+.top-bar h1 {
+    margin: 10px 0 0;
+    font-size: 24px;
+}
+
+.nav {
+    background: #233142;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px 0;
+    font-size: 15px;
+}
+
+.nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.course-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.img-physique       { background-image: url("../media/pictures/image-physique.jpg"); }
+.img-mecanique      { background-image: url("../media/pictures/image-mécanique.jpg"); }
+.img-electronique   { background-image: url("../media/pictures/image-électronique.jpg"); }
+.img-eco-gestion    { background-image: url("../media/pictures/image-eco-gestion.png"); }
+.img-mathematiques  { background-image: url("../media/pictures/photo-maths.jpg"); }
+.img-informatique   { background-image: url("../media/pictures/image-informatique.jpeg"); }
+
+.course-body {
+    padding: 16px 18px 14px;
+}
+
+.course-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.course-short {
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 10px;
+}
+
+.course-news {
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    padding: 12px 18px 14px;
+    font-size: 13px;
+}
+
+.course-news-title {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.course-news ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.course-news li::before {
+    content: "• ";
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.course-footer {
+    padding: 10px 18px 16px;
+}
+
+.course-footer a {
+    display: inline-block;
+    background: #22c55e;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 7px 12px;
+    border-radius: 6px;
+}
+
+.course-footer a:hover {
+    background: #16a34a;
+}
