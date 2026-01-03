@@ -1,0 +1,157 @@
+/* ===============================
+   MOBILE CSS – Smartphone
+   (≤ 767px)
+   =============================== */
+
+@media (max-width: 767px) {
+
+  /* ----- Base ----- */
+  body {
+    font-size: 14px;
+  }
+
+  /* ----- Header ----- */
+  header {
+    padding: 16px 16px 14px;
+  }
+
+  .header-title {
+    font-size: 1.2rem;
+  }
+
+  /* Logos */
+  .header-logos {
+    gap: 12px;
+  }
+
+  .header-logos img {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Barre de recherche */
+  .search-bar {
+    margin-top: 12px;
+  }
+
+  .search-bar input {
+    width: 100%;
+    min-width: 0;
+    font-size: 0.85rem;
+  }
+
+  /* ----- Navigation ----- */
+  nav {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  nav a {
+    padding: 6px 8px;
+  }
+
+  /* ----- Main ----- */
+  main {
+    padding: 12px;
+  }
+
+  /* ----- Cours (liste) ----- */
+  .course-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .course-info-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+  }
+
+  .course-info-left img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .course-info-right {
+    font-size: 0.9rem;
+  }
+
+  /* ----- Sidebar Chat ----- */
+  .chat-sidebar {
+    padding: 14px;
+  }
+
+  .chat-sidebar h3 {
+    font-size: 1.05rem;
+  }
+
+  .chat-tab-group {
+    gap: 8px;
+  }
+
+  .chat-tab {
+    min-width: auto;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .chat-box {
+    height: 120px;
+    font-size: 0.85rem;
+  }
+
+  /* ----- Grille de cours ----- */
+  .page-container {
+    padding: 0 12px;
+  }
+
+  .page-title {
+    font-size: 20px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .course-image {
+    height: 160px;
+  }
+
+  .course-title {
+    font-size: 16px;
+  }
+
+  .course-short {
+    font-size: 13px;
+  }
+
+  .course-news {
+    font-size: 12px;
+  }
+
+  /* ----- Notifications ----- */
+  .notifications-group {
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .notification-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+
+  .notification-time {
+    position: static;
+    align-self: flex-end;
+    font-size: 0.8rem;
+  }
+}

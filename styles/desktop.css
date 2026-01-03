@@ -1,0 +1,484 @@
+/* ===============================
+   DESKTOP CSS – School Portal
+   Style moderne (≥ 768px)
+   =============================== */
+
+/* ----- Variables (design system) ----- */
+:root {
+    --primary: #23a865;
+    --secondary: #636363;
+    --background: #b4b3b3;
+    --surface: #ffffff;
+    --text: #1f2933;
+    --muted: #6b7280;
+    --accent: #4ade80;
+    --radius: 12px;
+}
+
+/* ----- Reset léger ----- */
+* {
+    box-sizing: border-box;
+}
+
+/* ----- Base ----- */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+/* ----- Header ----- */
+header {
+    background: linear-gradient(135deg, var(--primary), #4fa77b);
+    color: white;
+    padding: 24px 40px 18px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+/* Logos */
+.header-logos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.header-logos img {
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none;
+    width: 150px;
+    height: 150px;
+    max-width: none;
+    max-height: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Titre */
+.header-title {
+    margin: 0 0 0 0;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+/* Barre de recherche */
+.search-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.search-bar input {
+    width: 350px;
+    max-width: 100%;
+    min-width: 180px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+/* ----- Navigation ----- */
+nav {
+    background-color: var(--secondary);
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 14px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ----- Main layout ----- */
+main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    grid-template-columns: none;
+    gap: 0;
+}
+
+/* ----- Cours ----- */
+.courses-preview h2 {
+    margin-bottom: 24px;
+    font-size: 1.4rem;
+}
+
+.course-row {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    padding: 18px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-row:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.course-info-left {
+    text-align: center;
+}
+
+.course-info-left img {
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.course-info-left a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.course-info-right {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ----- Sidebar Chat ----- */
+.chat-sidebar {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    height: fit-content;
+}
+
+.chat-sidebar h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+}
+
+/* Boutons chat */
+.chat-tab-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.chat-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    margin-bottom: 0;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--secondary), #3b4a52);
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.chat-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Zone messages */
+.chat-box {
+    margin-top: 16px;
+    height: 150px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    padding: 10px;
+    font-size: 0.9rem;
+    background-color: #fafafa;
+    overflow-y: auto;
+}
+.progress-card {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4ade80, #22c55e);
+    border-radius: 999px;
+}
+
+/* Styles extraits de cours.html */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f3f6fb;
+}
+
+.top-bar {
+    background: #2f6f3e;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.top-bar img {
+    height: 70px;
+}
+
+.top-bar h1 {
+    margin: 10px 0 0;
+    font-size: 24px;
+}
+
+.nav {
+    background: #233142;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px 0;
+    font-size: 15px;
+}
+
+.nav a {
+    color: #959595;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.course-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.img-physique       { background-image: url("../media/pictures/image-physique.jpg"); }
+.img-mecanique      { background-image: url("../media/pictures/image-mécanique.jpg"); }
+.img-electronique   { background-image: url("../media/pictures/image-électronique.jpg"); }
+.img-eco-gestion    { background-image: url("../media/pictures/image-eco-gestion.png"); }
+.img-mathematiques  { background-image: url("../media/pictures/photo-maths.jpg"); }
+.img-informatique   { background-image: url("../media/pictures/image-informatique.jpeg"); }
+
+.course-body {
+    padding: 16px 18px 14px;
+}
+
+.course-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.course-short {
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 10px;
+}
+
+.course-news {
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    padding: 12px 18px 14px;
+    font-size: 13px;
+}
+
+.course-news-title {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.course-news ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.course-news li::before {
+    content: "• ";
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.course-footer {
+    padding: 10px 18px 16px;
+}
+
+.course-footer a {
+    display: inline-block;
+    background: #22c55e;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 7px 12px;
+    border-radius: 6px;
+}
+
+.course-footer a:hover {
+    background: #16a34a;
+}
+
+/* Notifications style Teams/Outlook */
+.notifications-group {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin: 30px 0 24px 0;
+}
+
+.notification-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(44,62,80,0.10);
+    border-left: 5px solid var(--primary);
+    min-width: 260px;
+    max-width: 500px;
+    padding: 18px 22px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    font-size: 1rem;
+    transition: box-shadow 0.2s;
+}
+
+.notification-card:hover {
+    box-shadow: 0 8px 28px rgba(44,62,80,0.16);
+}
+
+.notification-title {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 2px;
+    font-size: 1.08em;
+}
+
+.notification-time {
+    font-size: 0.85em;
+    color: #6b7280;
+    position: absolute;
+    top: 16px;
+    right: 18px;
+}
+
+.notification-content {
+    color: #374151;
+    font-size: 0.97em;
+}
+
+@media (max-width: 900px) {
+    .notifications-group {
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+    }
+    .notification-card {
+        min-width: 0;
+        width: 95%;
+        max-width: 420px;
+    }
+}
+
+@media (min-width: 768px) {
+  .header-logos {
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    width: 100%;
+  }
+  .header-logos img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+@media (max-width: 767px) {
+  .header-logos {
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+  }
+  .header-logos img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 90px;
+    height: 90px;
+  }
+}
